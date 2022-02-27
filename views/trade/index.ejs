@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <%- include('../partials/fonts.ejs')%>
+  <link rel="stylesheet" href="/css/common.css" />
+  <link rel="stylesheet" href="/css/trades.css" />
+</head>
+
+<body>
+  <%- include('../partials/header.ejs')%>
+  <main>
+    <div class="cards">
+      <%
+
+          let name = Object.keys(trade);
+
+          if(name.length!=0){ 
+          
+          for(let i=0;i<name.length;i++){
+
+          %>
+
+      <div class="card">
+        <%= name[i]%>
+        <div class="card-content">
+          <ul>
+            <% for(let j=0;j<trade[name[i]].length;j++) { %>
+            <li> <%= trade[name[i]][j].name%> </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+      <%}
+            }  else {%>
+      <h1>no items to display</h1>
+      <% } %>
+    </div>
+    </div>
+  </main>
+  <%- include('../partials/footer.ejs')%>
+</body>
+
+</html>

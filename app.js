@@ -1,6 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const methodoverride = require('method-override');
+const tradeRoutes = require('./routes/tradeRoutes');
+
 
 const app = express();
 
@@ -17,5 +19,7 @@ app.use(methodoverride('_method'));
 app.get('/', (req, res) => {
     res.render('index');
 });
+
+app.use('/trades', tradeRoutes);
 
 app.listen(port, host, () => console.log('server is running on', port));

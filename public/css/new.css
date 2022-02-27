@@ -1,0 +1,65 @@
+main {
+    padding: 3rem;
+  }
+  .page-heading {
+    font-family: "The Nautigal";
+    text-align: center;
+    font-size: 5rem;
+    margin-bottom: 3rem;
+  }
+  .new-trade-form {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: sans-serif;
+  }
+  
+  .new-trade-form input {
+    width: 70%;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgb(168, 168, 168);
+  }
+  
+  .new-trade-form label {
+    width: 25%;
+    text-align: right;
+    font-family: "Dongle";
+    font-size: 1.8rem;
+  }
+  
+  .new-trade-form textarea {
+    width: 70%;
+    border-radius: 10px;
+    padding: 1rem;
+    border: 1px solid rgb(168, 168, 168);
+  }
+  
+  .form-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.6rem;
+  }
+  
+  .create-button {
+    text-decoration: none;
+    font-family: "Dongle";
+    font-size: 2rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin-left: auto;
+    margin-top: 2rem;
+    background-image: linear-gradient(#8080ff, #ff99ff);
+    background-position: left;
+    border-radius: 10px;
+    transition: all 0.2s;
+    color: rgb(255, 255, 255);
+  }
+  
+  .create-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.1);
+  }
+  
