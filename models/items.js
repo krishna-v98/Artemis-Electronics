@@ -60,4 +60,17 @@ const trades =
     ]
 };
 
+let names = Object.keys(trades);
+
 exports.find = () => trades;
+
+exports.findById = id => {
+    for (let i = 0; i < names.length; i++) {
+        for (let j = 0; j < trades[names[i]].length; j++) {
+            if(trades[names[i]][j].id == id){
+                return trades[names[i]][j];
+            }
+        }
+    }
+    return -1;
+};
