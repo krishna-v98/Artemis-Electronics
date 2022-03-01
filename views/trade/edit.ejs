@@ -15,29 +15,29 @@
   <%- include('../partials/header.ejs')%>
   <main>
     <div class="page-heading">Start a Trade</div>
-    <form class="new-trade-form" id="my_form" action="/trades" method="POST">
+    <form class="new-trade-form" id="my_form" action="/trades/<%=trade.id%>?_method=PUT" method="POST">
       <div class="form-line">
         <label for="category">Category</label>
-        <input type="text" id="category" name="category" placeholder="Enter Category" />
+        <input type="text" id="category" name="category" placeholder="Enter Category" value="<%= trade.category %> " />
       </div>
       <div class="form-line">
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Enter Name" />
+        <input type="text" id="name" name="name" placeholder="Enter Name" value="<%= trade.name %> " />
       </div>
       <div class="form-line">
         <label for="image">Image Link</label>
-        <input type="text" id="image" name="imageLink" placeholder="Paste Image link" />
+        <input type="text" id="image" name="imageLink" placeholder="Paste Image link" value="<%= trade.imageLink %> " />
       </div>
       <div class="form-line">
         <label for="price">Price</label>
-        <input type="text" id="price" name="price" placeholder="Enter Price" />
+        <input type="text" id="price" name="price" placeholder="Enter Price" value="<%= trade.price %> " />
       </div>
       <div class="form-line">
         <label for="description">Product description</label>
-        <textarea id="desc" cols="30" rows="5" name="description" placeholder="Give details about your product"></textarea>
+        <textarea id="desc" cols="30" rows="5" name="description" placeholder="Give details about your product"><%= trade.description %> </textarea>
       </div>
       <div class="form-line">
-        <a class="create-button" href="javascript:{}" onclick="document.getElementById('my_form').submit();">Create Trade</a>
+        <a class="create-button" href="javascript:{}" onclick="document.getElementById('my_form').submit();">Make Changes</a>
       </div>
     </form>
   </main>

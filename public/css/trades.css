@@ -1,3 +1,25 @@
+.no-items {
+  width: 60%;
+
+  background-image: linear-gradient(
+      rgba(70, 70, 70, 0.801),
+      rgba(10, 10, 10, 0.897)
+    ),
+    url("https://source.unsplash.com/2-eCuma3qO0");
+  background-size: cover;
+  background-position: bottom;
+  height: 30rem;
+  padding: 2rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  font-family: "Lato";
+  margin: 3rem auto 0 auto;
+  border-radius: 10px;
+}
+
 .cards {
   width: 100%;
   margin-top: 5rem;
@@ -49,3 +71,7 @@
   display: inline-block;
 }
 
+.card-content li a {
+  color: white;
+  text-decoration: none;
+}

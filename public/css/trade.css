@@ -5,10 +5,25 @@ main {
 .item {
   display: flex;
   flex-direction: column;
-  background-image: linear-gradient(darkgrey, black);
+  background: linear-gradient(#38386e, #613961);
+
   color: white;
   border-radius: 30px;
-  padding: 3rem;
+  padding: 4rem;
+}
+
+.item__heading {
+  text-align: center;
+  font-family: "Lato", sans-serif;
+  font-size: 2rem;
+  padding: 0 1.5rem 3rem 1.5rem;
+  font-weight: bold;
+  /* background-color: rgb(41, 41, 41); */
+  /* border-radius: 10px; */
+  width: auto;
+  margin-bottom: 4rem;
+  display: inline-block;
+  border-bottom: 1px solid darkgrey;
 }
 
 .item__details {
@@ -16,12 +31,9 @@ main {
   justify-content: space-between;
 }
 
-.item__photo{
-
+.item__photo {
   width: 45%;
-}
-.item__price {
-  width: 50%;
+  /* margin-left: 2rem; */
 }
 
 .item__price {
@@ -30,18 +42,21 @@ main {
   align-items: center;
   margin: 0 auto;
   font-size: 3rem;
-  background-color: black;
-  padding: 1rem;
-border-radius: 10px;
-width: 30%;
+  /* background-color: rgb(41, 41, 41); */
+  /* padding: 1.8rem; */
+  width: 100%;
+  /* border-top: 1px solid rgb(121, 121, 121); */
+  border-radius: 10px;
 }
 
 .item__trade {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  padding: 1rem 12rem;
+  width: 47%;
+  height: 100%;
+  margin: 0 auto;
 }
 
 .item__options {
@@ -55,9 +70,8 @@ width: 30%;
   width: 100%;
   height: 25rem;
   object-fit: cover;
-  border-radius: 30px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .item__name {
@@ -65,35 +79,83 @@ width: 30%;
   height: auto;
   width: 100%;
   text-align: center;
-  font-size: 3rem;
-  padding: 1rem;
-  font-family: "Dongle", sans-serif;
-  background-color: rgb(87, 87, 87);
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  font-size: 2rem;
+  padding: 2.5rem;
+  font-family: "Lato", sans-serif;
+
+  background-color: rgb(71, 71, 71);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .trade-button,
-.rate-button {
-  padding: 1rem 2rem;
+.rate-button,
+.edit-button,
+.delete-button {
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
   background-color: black;
-  border-radius: 10px;
   font-size: 1.3rem;
+  width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-family: "Lato",sans-serif;
+  display: flex;
+  align-items: center;
 }
 
-.trade-button{
-  background-image: linear-gradient(rgb(29, 146, 0),rgb(102, 255, 0));
+.trade-button svg,
+.rate-button svg,
+.edit-button svg,
+.delete-button svg{
+  margin-left: 1rem;
 }
 
-.rate-button{
-  background-image: linear-gradient(rgb(199, 169, 0),rgb(185, 167, 0));
+.trade-button {
+  background-color: rgb(95, 95, 95,0.5);
+  background-position: center;
+  background-size: cover;
+  /* border-top-left-radius: 10px; */
 }
 
-.item__desc{
+.rate-button {
+    background-color: rgb(95, 95, 95,0.5);
+
+  background-position: center;
+  background-size: cover;
+  /* border-top-right-radius: 10px; */
+}
+
+.edit-button,
+.delete-button {
+  margin-top: 1.5rem;
+}
+
+.edit-button {
+    background-color: rgb(95, 95, 95,0.5);
+
+  background-position: center;
+  background-size: cover;
+  /* border-bottom-left-radius: 10px; */
+}
+
+.delete-button {
+    background-color: rgb(95, 95, 95,0.5);
+
+  background-position: center;
+  background-size: cover;
+  /* border-bottom-right-radius: 10px; */
+}
+
+.item__desc {
   padding: 3rem;
   font-size: 1.3rem;
-  line-height: 1.5rem;
+  line-height: 1.7rem;
   background-color: rgb(71, 71, 71);
-  border-radius: 30px; 
-  font-family: 'Hubballi', cursive;
+  font-family: "Lato", sans-serif;
+  border-radius: 10px;
+  text-align: justify;
+  margin-top: 2rem;
 }

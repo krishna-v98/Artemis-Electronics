@@ -14,33 +14,40 @@
 <body>
   <%- include('../partials/header.ejs')%>
   <main>
+
+    <% if(names.length == 0){ %>
+
+    <div class="no-items">
+      No Items to display
+    </div>
+
+    <%    }
+  else{ %>
+
     <div class="cards">
-      <%
 
-          let name = Object.keys(trade);
-
-          if(name.length!=0){ 
-          
-          for(let i=0;i<name.length;i++){
-
-          %>
+      <% for(let i=0;i<names.length;i++){ %>
 
       <div class="card">
-        <%= name[i]%>
+        <%= names[i] %>
         <div class="card-content">
-          <ul>
-            <% for(let j=0;j<trade[name[i]].length;j++) { %>
-            <li> <%= trade[name[i]][j].name%> </li>
-            <% } %>
-          </ul>
+          <% for(let j=0;j<trades.length;j++){
+            if(trades[j].category == names[i]){ %>
+          <li>
+            <a href="/trades/<%=trades[j].id%>"><%= trades[j].name %></a>
+
+          </li>
+          <% }
+    } %>
         </div>
       </div>
-      <%}
-            }  else {%>
-      <h1>no items to display</h1>
-      <% } %>
+      <%  } %>
     </div>
-    </div>
+
+    <% } %>
+
+
+
   </main>
   <%- include('../partials/footer.ejs')%>
 </body>
