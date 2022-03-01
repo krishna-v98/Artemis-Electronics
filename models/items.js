@@ -35,7 +35,7 @@ const trades = [
         name: 'iPhone 13 Pro Max',
         price: '$1300',
         description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt distinctio optio consequuntur voluptates, natus nemo tempora odit et quam at placeat suscipit corporis ullam adipisci iure maxime explicabo minus! Dolorem voluptas ab minima sapiente quidem sit perferendis, officiis culpa voluptates iusto numquam qui voluptatibus ea eum amet itaque, quod temporibus odit explicabo dolores tempora ad. Nam error aut odit perspiciatis.',
-        imageLink: 'https://rog.asus.com/media/1578098363696.jpg',
+        imageLink: 'https://s.yimg.com/uu/api/res/1.2/dxpxr7IJQbsNE3us8eBTZQ--~B/aD0xMDEzO3c9MTgwMDthcHBpZD15dGFjaHlvbg--/https://s.yimg.com/os/creatr-uploaded-images/2021-09/25c681c0-1cfe-11ec-b1ed-aff3c2fd2c38.cf.webp',
         category: 'Mobiles'
     },
     {
@@ -44,7 +44,7 @@ const trades = [
         name: 'iPhone 13 Pro ',
         price: '$1200',
         description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt distinctio optio consequuntur voluptates, natus nemo tempora odit et quam at placeat suscipit corporis ullam adipisci iure maxime explicabo minus! Dolorem voluptas ab minima sapiente quidem sit perferendis, officiis culpa voluptates iusto numquam qui voluptatibus ea eum amet itaque, quod temporibus odit explicabo dolores tempora ad. Nam error aut odit perspiciatis.',
-        imageLink: 'https://rog.asus.com/media/1578098363696.jpg',
+        imageLink: 'https://s.yimg.com/uu/api/res/1.2/dxpxr7IJQbsNE3us8eBTZQ--~B/aD0xMDEzO3c9MTgwMDthcHBpZD15dGFjaHlvbg--/https://s.yimg.com/os/creatr-uploaded-images/2021-09/25c681c0-1cfe-11ec-b1ed-aff3c2fd2c38.cf.webp',
         category: 'Mobiles',
     },
     {
@@ -53,7 +53,7 @@ const trades = [
         name: 'JBL Charge 5',
         price: '$180',
         description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt distinctio optio consequuntur voluptates, natus nemo tempora odit et quam at placeat suscipit corporis ullam adipisci iure maxime explicabo minus! Dolorem voluptas ab minima sapiente quidem sit perferendis, officiis culpa voluptates iusto numquam qui voluptatibus ea eum amet itaque, quod temporibus odit explicabo dolores tempora ad. Nam error aut odit perspiciatis.',
-        imageLink: 'https://rog.asus.com/media/1578098363696.jpg',
+        imageLink: 'https://cdn.shopify.com/s/files/1/1123/6098/products/JBL_CHARGE5_HERO_BLACK_0046_x1_f9e3e961-f67c-46ed-965e-44aafb930a73_large.png?v=1617997323',
         category: 'Sound',
     },
     {
@@ -62,7 +62,7 @@ const trades = [
         name: 'Bose Soundbar ',
         price: '$800',
         description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt distinctio optio consequuntur voluptates, natus nemo tempora odit et quam at placeat suscipit corporis ullam adipisci iure maxime explicabo minus! Dolorem voluptas ab minima sapiente quidem sit perferendis, officiis culpa voluptates iusto numquam qui voluptatibus ea eum amet itaque, quod temporibus odit explicabo dolores tempora ad. Nam error aut odit perspiciatis.',
-        imageLink: 'https://rog.asus.com/media/1578098363696.jpg',
+        imageLink: 'https://i.rtings.com/assets/products/ZzTCnRUm/bose-solo-5/design-medium.jpg',
         category: 'Sound',
     },
 ];
