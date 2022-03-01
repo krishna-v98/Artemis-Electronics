@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%- include('./partials/fonts.ejs') %>
+  <link rel="stylesheet" href="/css/error.css">
+  <link rel="stylesheet" href="/css/common.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <%- include('./partials/header.ejs') %>
+  <main>
+    <div class="error-message">
+      <%= error.message %>
+    </div>
+    <div class="error-status">
+     Status: <%= error.status %>
+    </div>
+  </main>
+  <%- include('./partials/footer.ejs') %>
+</body>
+
+</html>

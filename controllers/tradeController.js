@@ -23,7 +23,8 @@ exports.show = (req, res) => {
         res.render('./trade/show', { item: item });
     }
     else {
-        res.status(404).send('Item not found');
+
+        res.status(404).render('not-found');
     }
 };
 
@@ -39,8 +40,10 @@ exports.edit = (req, res) => {
     if (trade) {
         res.render('./trade/edit', { trade });
     }
-    else
-        res.status(404).send('item not found');
+    else {
+
+        res.status(404).render('not-found');
+    }
 };
 
 exports.update = (req, res) => {
@@ -48,8 +51,9 @@ exports.update = (req, res) => {
     let id = req.params.id;
     if (model.updateById(id, trade)) {
         res.redirect('/trades/' + id);
-    } else
-        res.status(404).send('can\'t edit');
+    } else {
+        res.status(404).render('not-found');
+    }
 };
 
 exports.delete = (req, res) => {
@@ -57,5 +61,7 @@ exports.delete = (req, res) => {
     if (model.deleteById(id)) {
         res.redirect('/trades');
     }
-    else res.status(404).send('404 item not found');
+    else {
+        res.status(404).render('not-found');
+    }
 };

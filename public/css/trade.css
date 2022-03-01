@@ -101,7 +101,7 @@ main {
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  font-family: "Lato",sans-serif;
+  font-family: "Lato", sans-serif;
   display: flex;
   align-items: center;
 }
@@ -109,19 +109,19 @@ main {
 .trade-button svg,
 .rate-button svg,
 .edit-button svg,
-.delete-button svg{
+.delete-button svg {
   margin-left: 1rem;
 }
 
 .trade-button {
-  background-color: rgb(95, 95, 95,0.5);
+  background-color: rgb(95, 95, 95, 0.5);
   background-position: center;
   background-size: cover;
   /* border-top-left-radius: 10px; */
 }
 
 .rate-button {
-    background-color: rgb(95, 95, 95,0.5);
+  background-color: rgb(95, 95, 95, 0.5);
 
   background-position: center;
   background-size: cover;
@@ -133,8 +133,14 @@ main {
   margin-top: 1.5rem;
 }
 
+.edit-button a,
+.delete-button a {
+  text-decoration: none;
+  color: white;
+}
+
 .edit-button {
-    background-color: rgb(95, 95, 95,0.5);
+  background-color: rgb(95, 95, 95, 0.5);
 
   background-position: center;
   background-size: cover;
@@ -142,7 +148,7 @@ main {
 }
 
 .delete-button {
-    background-color: rgb(95, 95, 95,0.5);
+  background-color: rgb(95, 95, 95, 0.5);
 
   background-position: center;
   background-size: cover;

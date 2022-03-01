@@ -1,0 +1,32 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  margin: 3rem auto 0 auto;
+  height: 20rem;
+  width: 60%;
+
+  background-image: linear-gradient(
+      rgba(70, 70, 70, 0.801),
+      rgba(10, 10, 10, 0.897)
+    ),
+    url("https://source.unsplash.com/PQASiZwAWSk");
+  background-size: cover;
+  background-position: bottom;
+  height: 30rem;
+  padding: 2rem;
+  border-radius: 10px;
+  font-size: 3.5rem;
+  font-family: "Lato";
+  color: white;
+}
+
+.error-status{
+    font-size: 2.3rem;
+    margin-top: 2rem;
+    background-color: rgba(121, 0, 0, 0.568);
+    padding: 1rem;
+    border-radius: 10px;
+}
