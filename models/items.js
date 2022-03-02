@@ -9,7 +9,8 @@ const trades = [
         price: '$1800',
         description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt distinctio optio consequuntur voluptates, natus nemo tempora odit et quam at placeat suscipit corporis ullam adipisci iure maxime explicabo minus! Dolorem voluptas ab minima sapiente quidem sit perferendis, officiis culpa voluptates iusto numquam qui voluptatibus ea eum amet itaque, quod temporibus odit explicabo dolores tempora ad. Nam error aut odit perspiciatis.',
         imageLink: 'https://rog.asus.com/media/1578098363696.jpg',
-        category: 'Laptops'
+        category: 'Laptops',
+        status:'available'
     },
     {
         id: 'a2',
@@ -18,7 +19,8 @@ const trades = [
         price: '$2000',
         description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt distinctio optio consequuntur voluptates, natus nemo tempora odit et quam at placeat suscipit corporis ullam adipisci iure maxime explicabo minus! Dolorem voluptas ab minima sapiente quidem sit perferendis, officiis culpa voluptates iusto numquam qui voluptatibus ea eum amet itaque, quod temporibus odit explicabo dolores tempora ad. Nam error aut odit perspiciatis.',
         imageLink: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp16-spacegray-gallery1-202110?wid=4000&hei=3072&fmt=jpeg&qlt=80&.v=1632799176000',
-        category: 'Laptops'
+        category: 'Laptops',
+        status:'available'
     },
     {
         id: 'a3',
@@ -27,7 +29,8 @@ const trades = [
         price: '$2500',
         description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt distinctio optio consequuntur voluptates, natus nemo tempora odit et quam at placeat suscipit corporis ullam adipisci iure maxime explicabo minus! Dolorem voluptas ab minima sapiente quidem sit perferendis, officiis culpa voluptates iusto numquam qui voluptatibus ea eum amet itaque, quod temporibus odit explicabo dolores tempora ad. Nam error aut odit perspiciatis.',
         imageLink: 'https://www.bhphotovideo.com/images/images2500x2500/apple_mbp_16_sg_25_16_2_macbook_pro_with_1668323.jpg',
-        category: 'Laptops'
+        category: 'Laptops',
+        status:'available'
     },
     {
         id: 'b1',
@@ -36,7 +39,8 @@ const trades = [
         price: '$1300',
         description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt distinctio optio consequuntur voluptates, natus nemo tempora odit et quam at placeat suscipit corporis ullam adipisci iure maxime explicabo minus! Dolorem voluptas ab minima sapiente quidem sit perferendis, officiis culpa voluptates iusto numquam qui voluptatibus ea eum amet itaque, quod temporibus odit explicabo dolores tempora ad. Nam error aut odit perspiciatis.',
         imageLink: 'https://s.yimg.com/uu/api/res/1.2/dxpxr7IJQbsNE3us8eBTZQ--~B/aD0xMDEzO3c9MTgwMDthcHBpZD15dGFjaHlvbg--/https://s.yimg.com/os/creatr-uploaded-images/2021-09/25c681c0-1cfe-11ec-b1ed-aff3c2fd2c38.cf.webp',
-        category: 'Mobiles'
+        category: 'Mobiles',
+        status:'available'
     },
     {
         id: 'b2',
@@ -46,6 +50,7 @@ const trades = [
         description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt distinctio optio consequuntur voluptates, natus nemo tempora odit et quam at placeat suscipit corporis ullam adipisci iure maxime explicabo minus! Dolorem voluptas ab minima sapiente quidem sit perferendis, officiis culpa voluptates iusto numquam qui voluptatibus ea eum amet itaque, quod temporibus odit explicabo dolores tempora ad. Nam error aut odit perspiciatis.',
         imageLink: 'https://s.yimg.com/uu/api/res/1.2/dxpxr7IJQbsNE3us8eBTZQ--~B/aD0xMDEzO3c9MTgwMDthcHBpZD15dGFjaHlvbg--/https://s.yimg.com/os/creatr-uploaded-images/2021-09/25c681c0-1cfe-11ec-b1ed-aff3c2fd2c38.cf.webp',
         category: 'Mobiles',
+        status:'available'
     },
     {
         id: 'c1',
@@ -55,6 +60,7 @@ const trades = [
         description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt distinctio optio consequuntur voluptates, natus nemo tempora odit et quam at placeat suscipit corporis ullam adipisci iure maxime explicabo minus! Dolorem voluptas ab minima sapiente quidem sit perferendis, officiis culpa voluptates iusto numquam qui voluptatibus ea eum amet itaque, quod temporibus odit explicabo dolores tempora ad. Nam error aut odit perspiciatis.',
         imageLink: 'https://cdn.shopify.com/s/files/1/1123/6098/products/JBL_CHARGE5_HERO_BLACK_0046_x1_f9e3e961-f67c-46ed-965e-44aafb930a73_large.png?v=1617997323',
         category: 'Sound',
+        status:'available'
     },
     {
         id: 'c2',
@@ -64,6 +70,7 @@ const trades = [
         description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt distinctio optio consequuntur voluptates, natus nemo tempora odit et quam at placeat suscipit corporis ullam adipisci iure maxime explicabo minus! Dolorem voluptas ab minima sapiente quidem sit perferendis, officiis culpa voluptates iusto numquam qui voluptatibus ea eum amet itaque, quod temporibus odit explicabo dolores tempora ad. Nam error aut odit perspiciatis.',
         imageLink: 'https://i.rtings.com/assets/products/ZzTCnRUm/bose-solo-5/design-medium.jpg',
         category: 'Sound',
+        status:'unavailable'
     },
 ];
 
@@ -77,7 +84,6 @@ exports.save = trade => {
     trade.id = uuidv4();
     trade.createdAt = DateTime.now().toLocaleString(DateTime.DATETIME_SHORT);
     trades.push(trade);
-    console.log(trades);
 };
 
 exports.updateById = (id, newTrade) => {
@@ -88,6 +94,7 @@ exports.updateById = (id, newTrade) => {
         trade.imageLink = newTrade.imageLink;
         trade.description = newTrade.description;
         trade.category = newTrade.category;
+        trade.status = 'available'
         return true;
     }
     else return false;

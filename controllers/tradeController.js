@@ -9,7 +9,6 @@ exports.index = (req, res) => {
     }
     let uniqueNames = [...new Set(names)];
     res.render('./trade/index', { trades: trades, names: uniqueNames });
-    console.log(uniqueNames);
 };
 
 exports.new = (req, res) => {
