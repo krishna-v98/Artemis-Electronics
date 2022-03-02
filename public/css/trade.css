@@ -50,16 +50,19 @@ main {
 }
 
 .item__trade {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 45% 45%;
+  grid-template-rows: 45% 45%;
+  grid-gap: 1rem;
   justify-content: space-between;
   align-items: center;
-  width: 47%;
-  height: 100%;
-  margin: 0 auto;
+  width: 45%;
+  height: 10rem;
+  margin: 2rem auto 0 auto;
 }
 
 .item__options {
+  /* margin-top: 2rem; */
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -92,11 +95,10 @@ main {
 .rate-button,
 .edit-button,
 .delete-button {
-  margin-top: 2rem;
   padding: 1rem 1.5rem;
   background-color: black;
   font-size: 1.3rem;
-  width: 45%;
+  /* width: 45%; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -128,10 +130,6 @@ main {
   /* border-top-right-radius: 10px; */
 }
 
-.edit-button,
-.delete-button {
-  margin-top: 1.5rem;
-}
 
 .edit-button a,
 .delete-button a {
