@@ -15,15 +15,16 @@ exports.new = (req, res) => {
     res.render('./trade/new');
 };
 
-exports.show = (req, res) => {
+exports.show = (req, res, next) => {
     let id = req.params.id;
     let item = model.findById(id);
-    if (item != -1) {
+    if (item) {
         res.render('./trade/show', { item: item });
     }
     else {
-
-        res.status(404).render('not-found');
+        let err = new Error('Cannot find item with id \"' + id + '\"');
+        err.status = 404;
+        next(err);
     }
 };
 
@@ -33,34 +34,39 @@ exports.create = (req, res) => {
     res.redirect('/trades');
 };
 
-exports.edit = (req, res) => {
+exports.edit = (req, res, next) => {
     let id = req.params.id;
     let trade = model.findById(id);
     if (trade) {
         res.render('./trade/edit', { trade });
     }
     else {
-
-        res.status(404).render('not-found');
+        let err = new Error('Cannot find item to edit with ID ' + id);
+        err.status = 404;
+        next(err);
     }
 };
 
-exports.update = (req, res) => {
+exports.update = (req, res, next) => {
     let trade = req.body;
     let id = req.params.id;
     if (model.updateById(id, trade)) {
         res.redirect('/trades/' + id);
     } else {
-        res.status(404).render('not-found');
+        let err = new Error('Cannot find item to update with ID ' + id);
+        err.status = 404;
+        next(err);
     }
 };
 
-exports.delete = (req, res) => {
+exports.delete = (req, res, next) => {
     let id = req.params.id;
     if (model.deleteById(id)) {
         res.redirect('/trades');
     }
     else {
-        res.status(404).render('not-found');
+        let err = new Error('Cannot find item to delete with ID ' + id);
+        err.status = 404;
+        next(err);
     }
 };
