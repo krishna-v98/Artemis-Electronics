@@ -1,0 +1,45 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  margin: 3rem auto 0 auto;
+  height: 20rem;
+  width: 60%;
+  background-image: linear-gradient(
+      rgba(70, 70, 70, 0.801),
+      rgba(10, 10, 10, 0.897)
+    ),
+    url("https://source.unsplash.com/V5vqWC9gyEU");
+  background-size: cover;
+  background-position: bottom;
+  height: 30rem;
+  padding: 2rem;
+  border-radius: 10px;
+  font-size: 2rem;
+  font-family: "Lato";
+  color: white;
+  text-align: center;
+}
+
+main .title {
+  display: inline;
+  font-family: "The Nautigal", cursive;
+  font-size: 5rem;
+}
+
+main a {
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  background-color: rgba(169, 169, 169, 0.555);
+  padding: 1rem;
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  border-radius: 10px;
+}
+
+.footer-icons a {
+  background-color: transparent;
+}

@@ -1,139 +1,142 @@
 * {
-    box-sizing: border-box;
-    font-size: 100%;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .logo_login {
-    /* border-radius: 10px; */
-    background-color: black;
-    width: 100%;
-    height: 17rem;
-    background: linear-gradient(#8080ff, #ff99ff);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .logo_login__top {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  header a {
-    text-decoration: none;
-  }
-  
-  .heading {
-    font-size: 6rem;
-    color: white;
-    padding-left: 2rem;
-    padding-top: 2rem;
-    font-family: "The Nautigal", cursive;
-    font-weight: 700;
-  }
-  
-  nav {
-    padding: 4.5rem 2rem 2rem 2rem;
-    font-family: "Dongle", sans-serif;
-    font-weight: 400;
-    color: white;
-    font-size: 1.7rem;
-  }
-  
-  nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  nav ul li {
-    margin-right: 2rem;
-  }
-  
-  nav ul li a {
-    text-decoration: none;
-    color: white;
-  }
-  
-  .searchbar {
-    padding: 0.2rem 1rem;
-    width: 15rem;
-    background-color: #ffffff61;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .login {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .login svg {
-    margin-left: 0.4rem;
-  }
-  
-  .logo_login__bottom {
-    padding: 2rem 4rem;
-    font-family: "Dongle", sans-serif;
-    font-size: 2rem;
-  }
-  
-  .logo_login__bottom ul {
-    display: flex;
-    list-style: none;
-    color: white;
-    background-color: rgba(255, 255, 255, 0.198);
-    border-radius: 10px;
-  }
-  
-  .logo_login__bottom ul li {
-    margin-right: 2rem;
-    margin-left: 2rem;
-  }
-  
-  .logo_login__bottom ul li a {
-    text-decoration: none;
-    color: white;
+  box-sizing: border-box;
+  font-size: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.logo_login {
+  /* border-radius: 10px; */
+  background-color: black;
+  width: 100%;
+  height: 17rem;
+  background: linear-gradient(#8080ff, #ff99ff);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logo_login__top {
+  display: flex;
+  justify-content: space-between;
+}
+
+header a {
+  text-decoration: none;
+}
+
+.heading {
+  font-size: 6rem;
+  color: white;
+  padding-left: 2rem;
+  padding-top: 2rem;
+  font-family: "The Nautigal", cursive;
+  font-weight: 700;
+}
+
+nav {
+  padding: 4.5rem 2rem 2rem 2rem;
+  font-family: "Dongle", sans-serif;
+  font-weight: 400;
+  color: white;
+  font-size: 1.7rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+nav ul li {
+  margin-right: 2rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+.searchbar {
+  padding: 0.2rem 1rem;
+  width: 15rem;
+  background-color: #ffffff61;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login svg {
+  margin-left: 0.4rem;
+}
+
+.logo_login__bottom {
+  padding: 2rem 4rem;
+  font-family: "Dongle", sans-serif;
+  font-size: 2rem;
+}
+
+.logo_login__bottom ul {
+  display: flex;
+  list-style: none;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.198);
+  border-radius: 10px;
+}
+
+.logo_login__bottom ul li {
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+
+.logo_login__bottom ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+footer {
+  margin-top: 3rem;
+  width: 100%;
+  height: 10rem;
+  background: linear-gradient(black, gray);
+  color: white;
+  padding: 3rem;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-text__big {
+  font-family: "Dongle", sans-serif;
+  font-size: 1.8rem;
+}
+
+.footer-text_cpy {
+  font-size: 0.8rem;
+}
+.footer-icons a {
+  color: white;
+  text-decoration: none;
+}
+.footer-icons svg {
+  margin-right: 1.5rem;
+}
+
+@media only screen and (max-width: 900px) {
+  * {
+    font-size: 70%;
   }
 
-  footer {
-    margin-top: 3rem;
-    width: 100%;
-    height: 10rem;
-    background: linear-gradient(black, gray);
-    color: white;
-    padding: 3rem;
-    font-family: sans-serif;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  svg {
+    width: 3rem;
+    height: 3rem;
   }
-  
-  .footer-text__big {
-    font-family: "Dongle", sans-serif;
-    font-size: 1.8rem;
-  }
-  
-  .footer-text_cpy {
-    font-size: 0.8rem;
-  }
-  
-  .footer-icons svg {
-    margin-right: 1.5rem;
-  }
-  
-  @media only screen and (max-width:900px){
-    *{
-      font-size: 70%;
-    }
-
-    svg{
-      width: 3rem;
-      height: 3rem;
-    }
-  }
+}
