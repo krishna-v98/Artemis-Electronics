@@ -7,6 +7,7 @@ exports.index = (req, res) => {
     for (let i = 0; i < trades.length; i++) {
         names.push(trades[i].category);
     }
+    
     let uniqueNames = [...new Set(names)];
     res.render('./trade/index', { trades: trades, names: uniqueNames });
 };

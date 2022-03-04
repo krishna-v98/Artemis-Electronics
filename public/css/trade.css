@@ -6,7 +6,6 @@ main {
   display: flex;
   flex-direction: column;
   background: linear-gradient(#38386e, #613961);
-
   color: white;
   border-radius: 30px;
   padding: 4rem;

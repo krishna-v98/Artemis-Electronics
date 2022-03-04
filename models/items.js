@@ -94,7 +94,7 @@ exports.updateById = (id, newTrade) => {
         trade.imageLink = newTrade.imageLink;
         trade.description = newTrade.description;
         trade.category = newTrade.category;
-        trade.status = 'available'
+        trade.status = 'available';
         return true;
     }
     else return false;
