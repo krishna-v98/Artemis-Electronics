@@ -23,6 +23,21 @@ main {
   text-align: center;
 }
 
+#email-link {
+  font-size: 1.3rem;
+  margin-top: 0;
+  padding: 0.7rem;
+  font-family: "Roboto serif", serif;
+}
+
+small {
+  font-size: 1rem;
+}
+
+.small-text {
+  font-size: 1.5rem;
+}
+
 main .title {
   display: inline;
   font-family: "The Nautigal", cursive;
@@ -35,7 +50,6 @@ main a {
   display: inline-block;
   background-color: rgba(169, 169, 169, 0.555);
   padding: 1rem;
-  margin-top: 2rem;
   font-size: 1.5rem;
   border-radius: 10px;
 }
