@@ -16,7 +16,7 @@
   <main>
     <div class="page-heading">Start a Trade</div>
 
-    <form class="new-trade-form" id="my_form" action="/trades/<%=trade.id%>?_method=PUT" method="POST">
+    <form class="new-trade-form" id="my_form" action="/trades/<%=trade._id%>?_method=PUT" method="POST">
       
       <div class="form-line">
         <label for="category">Category</label>
@@ -33,6 +33,10 @@
       <div class="form-line">
         <label for="price">Price</label>
         <input type="text" id="price" name="price" placeholder="Enter Price" value="<%= trade.price %> " />
+      </div>
+      <div class="form-line">
+        <label for="status">Price</label>
+        <input type="text" id="status" name="status" placeholder="Enter Status" value="<%= trade.status %> " />
       </div>
       <div class="form-line">
         <label for="description">Product description</label>
