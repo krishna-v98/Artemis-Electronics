@@ -1,5 +1,6 @@
 const { DateTime } = require('luxon');
 const { v4: uuidv4 } = require('uuid');
+const { ObjectId } = require('mongodb');
 
 
 let trades;
@@ -10,34 +11,21 @@ exports.getCollection = db => {
 
 exports.find = () => trades.find().toArray();
 
-exports.findById = id => trades.find(trade => trade.id === id);
+exports.findById = id => trades.findOne({ _id: ObjectId(id) });
 
-exports.save = trade => {
-    trade.id = uuidv4();
-    trade.createdAt = DateTime.now().toLocaleString(DateTime.DATETIME_SHORT);
-    trades.push(trade);
-};
+exports.save = trade => trades.insertOne(trade);
 
-exports.updateById = (id, newTrade) => {
-    let trade = trades.find(trade => trade.id === id);
-    if (trade) {
-        trade.name = newTrade.name;
-        trade.price = newTrade.price;
-        trade.imageLink = newTrade.imageLink;
-        trade.description = newTrade.description;
-        trade.category = newTrade.category;
-        trade.status = 'available';
-        return true;
+exports.updateById = (id, newTrade) => trades.updateOne({ _id: ObjectId(id) }, {
+    $set: {
+        name: newTrade.name,
+        price: newTrade.price,
+        imageLink: newTrade.imageLink,
+        description: newTrade.description,
+        category: newTrade.category,
+        status: newTrade.status
     }
-    else return false;
-}
+});
 
 
-exports.deleteById = id => {
-    let index = trades.findIndex(trade => trade.id === id);
-    if (index != -1) {
-        trades.splice(index, 1);
-        return true;
-    }
-    else return false;
-}
+
+exports.deleteById = id => trades.deleteOne({ _id: ObjectId(id) });

@@ -34,7 +34,7 @@
           <% for(let j=0;j<trades.length;j++){
             if(trades[j].category == names[i]){ %>
           <li>
-            <a href="/trades/<%=trades[j].id%>"><%= trades[j].name %></a>
+            <a href="/trades/<%=trades[j]._id%>"><%= trades[j].name %></a>
 
           </li>
           <% }

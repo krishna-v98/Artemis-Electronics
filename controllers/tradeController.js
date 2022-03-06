@@ -23,56 +23,75 @@ exports.new = (req, res) => {
 
 exports.show = (req, res, next) => {
     let id = req.params.id;
-    let item = model.findById(id);
-    if (item) {
-        res.render('./trade/show', { item: item });
-    }
-    else {
-        let err = new Error('Cannot find item with id \"' + id + '\"');
-        err.status = 404;
-        next(err);
-    }
+    model.findById(id)
+        .then(item => {
+            if (item) {
+                res.render('./trade/show', { item: item });
+            } else {
+                let err = new Error('Cannot find item with id \"' + id + '\"');
+                err.status = 404;
+                next(err);
+            }
+        })
+        .catch(err => next(err));
+
+
 };
 
-exports.create = (req, res) => {
+exports.create = (req, res, next) => {
     let trade = req.body;
-    model.save(trade);
-    res.redirect('/trades');
+    trade.createdAt = new Date();
+    model.save(trade)
+        .then(result => res.redirect('/trades'))
+        .catch(err => next(err));
 };
 
 exports.edit = (req, res, next) => {
     let id = req.params.id;
-    let trade = model.findById(id);
-    if (trade) {
-        res.render('./trade/edit', { trade });
-    }
-    else {
-        let err = new Error('Cannot find item to edit with ID ' + id);
-        err.status = 404;
-        next(err);
-    }
+    model.findById(id)
+        .then(trade => {
+            if (trade)
+                res.render('./trade/edit', { trade });
+            else {
+                let err = new Error('Cannot find item to edit with ID ' + id);
+                err.status = 404;
+                next(err);
+            }
+
+        })
+        .catch(err => next(err));
 };
 
 exports.update = (req, res, next) => {
     let trade = req.body;
     let id = req.params.id;
-    if (model.updateById(id, trade)) {
-        res.redirect('/trades/' + id);
-    } else {
-        let err = new Error('Cannot find item to update with ID ' + id);
-        err.status = 404;
-        next(err);
-    }
+    model.updateById(id, trade)
+        .then(result => {
+            if (result.modifiedCount === 1)
+                res.redirect('/trades/' + id);
+            else {
+                let err = new Error('Cannot find item to update with ID ' + id);
+                err.status = 404;
+                next(err);
+            }
+        })
+        .catch(err => next(err));
+
+
+
 };
 
 exports.delete = (req, res, next) => {
     let id = req.params.id;
-    if (model.deleteById(id)) {
-        res.redirect('/trades');
-    }
-    else {
-        let err = new Error('Cannot find item to delete with ID ' + id);
-        err.status = 404;
-        next(err);
-    }
+    model.deleteById(id)
+        .then(result => {
+            if (result.deletedCount === 1)
+                res.redirect('/trades');
+            else {
+                let err = new Error('Cannot find item to delete with ID ' + id);
+                err.status = 404;
+                next(err);
+            }
+        })
+        .catch(err => next(err));
 };
