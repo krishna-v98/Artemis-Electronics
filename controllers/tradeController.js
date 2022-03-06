@@ -1,15 +1,20 @@
 const model = require('../models/items');
 
 //show all
-exports.index = (req, res) => {
-    let trades = model.find();
+exports.index = (req, res, next) => {
+
     let names = [];
-    for (let i = 0; i < trades.length; i++) {
-        names.push(trades[i].category);
-    }
-    
-    let uniqueNames = [...new Set(names)];
-    res.render('./trade/index', { trades: trades, names: uniqueNames });
+    model.find()
+        .then(trades => {
+            for (let i = 0; i < trades.length; i++) {
+                names.push(trades[i].category);
+            }
+            let uniqueNames = [...new Set(names)];
+            res.render('./trade/index', { trades: trades, names: uniqueNames });
+        })
+        .catch(err => next(err));
+
+
 };
 
 exports.new = (req, res) => {

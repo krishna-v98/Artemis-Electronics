@@ -2,13 +2,25 @@ const express = require('express');
 const morgan = require('morgan');
 const methodoverride = require('method-override');
 const tradeRoutes = require('./routes/tradeRoutes');
+const { MongoClient } = require('mongodb');
+const { getCollection } = require('./models/items');
 
 
 const app = express();
 
 const port = 3000;
 const host = 'localhost';
+const url = 'mongodb://localhost:27017';
 app.set('view engine', 'ejs');
+
+//connect to mongodb
+MongoClient.connect(url)
+    .then(client => {
+        const db = client.db('demos');
+        getCollection(db);
+        app.listen(port, host, () => console.log('server is running on', port));
+    })
+    .catch(err => console.log(err.message));
 
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
@@ -47,4 +59,3 @@ app.use((err, req, res, next) => {
     res.render('not-found', { error: err });
 });
 
-app.listen(port, host, () => console.log('server is running on', port));
