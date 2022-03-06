@@ -40,6 +40,8 @@ exports.show = (req, res, next) => {
 
 exports.create = (req, res, next) => {
     let trade = req.body;
+    trade.category = trade.category.trim();
+    trade.name = trade.name.trim();
     trade.createdAt = new Date();
     model.save(trade)
         .then(result => res.redirect('/trades'))
@@ -64,6 +66,8 @@ exports.edit = (req, res, next) => {
 
 exports.update = (req, res, next) => {
     let trade = req.body;
+    trade.category = trade.category.trim();
+    trade.name = trade.name.trim();
     let id = req.params.id;
     model.updateById(id, trade)
         .then(result => {
