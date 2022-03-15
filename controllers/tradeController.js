@@ -30,10 +30,12 @@ exports.show = (req, res, next) => {
             } else {
                 let err = new Error('Cannot find item with id \"' + id + '\"');
                 err.status = 404;
-                next(err);
+                throw err;
             }
         })
-        .catch(err => next(err));
+        .catch(err => {
+            next(err);
+        });
 
 
 };
