@@ -1,31 +1,28 @@
-const { DateTime } = require('luxon');
-const { v4: uuidv4 } = require('uuid');
 const { ObjectId } = require('mongodb');
+const mongoose = require('mogoose');
 
-
-let trades;
-
-exports.getCollection = db => {
-    trades = db.collection('trades');
-};
-
-exports.find = () => trades.find().toArray();
-
-exports.findById = id => trades.findOne({ _id: ObjectId(id) });
-
-exports.save = trade => trades.insertOne(trade);
-
-exports.updateById = (id, newTrade) => trades.updateOne({ _id: ObjectId(id) }, {
-    $set: {
-        name: newTrade.name,
-        price: newTrade.price,
-        imageLink: newTrade.imageLink,
-        description: newTrade.description,
-        category: newTrade.category,
-        status: newTrade.status
+const tradeSchema = new Schema({
+    name: { type: String, required: [true, 'Give a name for your product'] },
+    price: { type: Number, required: [true, 'Give a price for your product'] },
+    imageLink: {
+        type: String,
+        match: [/^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?:: (\d +)) ? (?: \/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/,
+            'should be a valid URL']
+    },
+    description: {
+        type: String,
+        required: [true, 'description is required'],
+        minlength: [10, 'description should have atleast 10 characters']
+    },
+    category: {
+        type: String,
+        required: [true, 'Give your product a category']
+    },
+    status: {
+        type: String,
+        enum: ['in stock', 'out of stock'],
+        default: 'in stock'
     }
-});
+}, { timestamps: true });
 
-
-
-exports.deleteById = id => trades.deleteOne({ _id: ObjectId(id) });
+module.exports = mongoose.model('Trade', tradeSchema);
