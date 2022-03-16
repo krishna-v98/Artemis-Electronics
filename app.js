@@ -1,23 +1,20 @@
 const express = require('express');
 const morgan = require('morgan');
 const methodoverride = require('method-override');
+const mongoose = require('mongoose');
 const tradeRoutes = require('./routes/tradeRoutes');
-const { MongoClient } = require('mongodb');
-const { getCollection } = require('./models/items');
 
 
 const app = express();
 
 const port = 3000;
 const host = 'localhost';
-const url = 'mongodb://localhost:27017';
+const url = 'mongodb://localhost:27017/demos';
 app.set('view engine', 'ejs');
 
 //connect to mongodb
-MongoClient.connect(url)
-    .then(client => {
-        const db = client.db('demos');
-        getCollection(db);
+mongoose.connect(url)
+    .then(() => {
         app.listen(port, host, () => console.log('server is running on', port));
     })
     .catch(err => console.log(err.message));
