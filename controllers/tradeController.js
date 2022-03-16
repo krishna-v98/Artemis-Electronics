@@ -23,6 +23,14 @@ exports.new = (req, res) => {
 
 exports.show = (req, res, next) => {
     let id = req.params.id;
+
+    //make sure entered ID is in correct format
+    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+        let err = new Error('Invalid trade ID');
+        err.status = 400;
+        return next(err);
+    }
+
     model.findById(id)
         .then(item => {
             if (item) {
@@ -36,15 +44,12 @@ exports.show = (req, res, next) => {
         .catch(err => {
             next(err);
         });
-
-
 };
 
 exports.create = (req, res, next) => {
-    let trade = req.body;
+    let trade = new model(req.body);
     trade.category = trade.category.trim();
     trade.name = trade.name.trim();
-    trade.createdAt = new Date();
     model.save(trade)
         .then(result => res.redirect('/trades'))
         .catch(err => next(err));
@@ -52,6 +57,13 @@ exports.create = (req, res, next) => {
 
 exports.edit = (req, res, next) => {
     let id = req.params.id;
+
+    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+        let err = new Error('Invalid trade ID');
+        err.status = 400;
+        return next(err);
+    }
+
     model.findById(id)
         .then(trade => {
             if (trade)
@@ -71,9 +83,16 @@ exports.update = (req, res, next) => {
     trade.category = trade.category.trim();
     trade.name = trade.name.trim();
     let id = req.params.id;
-    model.updateById(id, trade)
+
+    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+        let err = new Error('Invalid trade ID');
+        err.status = 400;
+        return next(err);
+    }
+
+    model.findByIdAndUpdate(id, trade, { userFindAndModify: false, runValidators: true })
         .then(result => {
-            if (result.modifiedCount === 1)
+            if (result)
                 res.redirect('/trades/' + id);
             else {
                 let err = new Error('Cannot find item to update with ID ' + id);
@@ -81,7 +100,11 @@ exports.update = (req, res, next) => {
                 next(err);
             }
         })
-        .catch(err => next(err));
+        .catch(err => {
+            if (err.name === 'ValidationError')
+                err.status = 400;
+            next(err);
+        });
 
 
 
@@ -89,9 +112,16 @@ exports.update = (req, res, next) => {
 
 exports.delete = (req, res, next) => {
     let id = req.params.id;
-    model.deleteById(id)
+
+    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+        let err = new Error('Invalid trade ID');
+        err.status = 400;
+        return next(err);
+    }
+
+    model.findByIdAndDelete(id, { userFindAndModify: false })
         .then(result => {
-            if (result.deletedCount === 1)
+            if (result)
                 res.redirect('/trades');
             else {
                 let err = new Error('Cannot find item to delete with ID ' + id);
