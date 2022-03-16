@@ -18,11 +18,11 @@
     <form class="new-trade-form" id="my_form" action="/trades" method="POST">
       <div class="form-line">
         <label for="category">Category</label>
-        <input type="text" id="category" name="category" placeholder="Enter Category" />
+        <input type="text" id="category" name="category" placeholder="Enter Category" required/>
       </div>
       <div class="form-line">
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Enter Name" />
+        <input type="text" id="name" name="name" placeholder="Enter Name" required/>
       </div>
       <div class="form-line">
         <label for="image">Image Link</label>
@@ -30,23 +30,24 @@
       </div>
       <div class="form-line">
         <label for="price">Price</label>
-        <input type="text" id="price" name="price" placeholder="Enter Price" />
+        <input type="text" id="price" name="price" placeholder="Enter Price" required/>
       </div>
       <div class="form-line">
         <label for="status">Status</label>
-        <input type="text" id="status" name="status" placeholder="Enter Status" />
+        <input type="text" id="status" name="status" placeholder="Enter Status" required/>
       </div>
       <div class="form-line">
         <label for="description">Product description</label>
         <textarea id="desc" cols="30" rows="5" name="description" placeholder="Give details about your product"></textarea>
       </div>
       <div class="form-line">
-        <a class="create-button" href="javascript:{}" onclick="document.getElementById('my_form').submit();">Create Trade</a>
+        <input class="create-button" type="submit">
+        <!-- <a class="create-button" href="javascript:{}" onclick="document.getElementById('my_form').submit();">Create Trade</a> -->
       </div>
     </form>
   </main>
   <%- include('../partials/footer.ejs')%>
-  
+
 </body>
 
 </html>

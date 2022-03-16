@@ -47,12 +47,19 @@ exports.show = (req, res, next) => {
 };
 
 exports.create = (req, res, next) => {
-    let trade = new model(req.body);
-    trade.category = trade.category.trim();
-    trade.name = trade.name.trim();
-    model.save(trade)
+    let input = req.body;
+    input.category = input.category.trim();
+    input.name = input.name.trim();
+    let trade = new model(input);
+
+    trade.save(trade) //should be trade.save not model.save
         .then(result => res.redirect('/trades'))
-        .catch(err => next(err));
+        .catch(err => {
+            if (err.name == 'ValidationError') {
+                err.status = 400;
+            }
+            next(err);
+        });
 };
 
 exports.edit = (req, res, next) => {
