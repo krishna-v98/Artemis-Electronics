@@ -24,16 +24,17 @@ exports.new = (req, res) => {
 exports.show = (req, res, next) => {
     let id = req.params.id;
 
-    //make sure entered ID is in correct format
-    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
+    if(!id.match(/^[0-9a-fA-F]{24}$/)){
         let err = new Error('Invalid trade ID');
         err.status = 400;
         return next(err);
     }
+    
 
     model.findById(id)
         .then(item => {
             if (item) {
+                console.log(item);
                 res.render('./trade/show', { item: item });
             } else {
                 let err = new Error('Cannot find item with id \"' + id + '\"');

@@ -1,118 +1,123 @@
-
 main {
-    display: flex;
-    flex-direction: column;
-    margin-top: 3rem;
-    font-family: "Roboto";
-    font-weight: 300;
-  }
-  
-  main h2 {
-    text-align: center;
-    font-family: "The Nautigal";
-    font-size: 2.5rem;
-  }
-  
-  .main__description {
-    width: 40%;
-    margin: 2rem auto 1rem auto;
-    font-family: "Dongle";
-    font-size: 1.7rem;
-    line-height: 1.5rem;
-  }
-  
-  .main__description__text {
-    text-align: center;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+  font-family: "Roboto";
+  font-weight: 300;
+}
+
+main h2 {
+  text-align: center;
+  font-family: "The Nautigal";
+  font-size: 2.5rem;
+}
+
+.main__description {
+  width: 40%;
+  margin: 2rem auto 1rem auto;
+  font-family: "Dongle";
+  font-size: 1.7rem;
+  line-height: 1.5rem;
+}
+
+.main__description__text {
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 85%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-family: "Dongle";
+  font-weight: 300;
+}
+
+@media screen and (max-width: 600px) {
   .cards {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 3rem;
-    margin-left: auto;
-    margin-right: auto;
-    width: 85%;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    font-family: 'Dongle';
-    font-weight: 300;
-  }
-  
-  .card {
-    padding: 2rem;
-    border-radius: 15px;
-    height: 22rem;
-    width: 22%;
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.2);
-    transition: all 0.2s;
   }
-  
-  .card:hover {
-    box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.4);
-    transform: scale(1.05);
-  }
-  
-  .card__logo {
-    border-radius: 10px;
-    background: linear-gradient(#6161c0, #a061a0);
-    color: white;
-    height: 60%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .card__text {
-    margin-top: 1rem;
-    font-weight: 400;
-    font-size: 1.9rem;
-  }
-  
-  .card__desc p {
-    text-align: center;
-    font-size: 1.5rem;
-    line-height: 1.4rem;
-  }
-  
-  .locations {
-    color: white;
-    padding: 3rem;
-    margin-top: 5rem;
-    width: 100%;
-    height: 30rem;
-    background-image: linear-gradient(
-        to bottom,
-        rgba(85, 85, 85, 0.52),
-        rgb(117, 19, 93)
-      ),url(/images/usmap.png);
-    background-size: cover;
-  }
-  
-  .locations__text{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    font-size: 7rem;
-    font-weight: light;
-    font-family: 'Dongle',sans-serif;
-    width: 100%;
-    padding: 2rem;
-    border-radius: 10px;
-  }
-  
-  .description{
-    text-align: center;
-    width: 50%;
-    margin: 5rem auto 3rem auto;
-    font-family: 'Dongle';
-    font-size: 2rem;
-    line-height: 1.8rem;
-  }
-  
-  
+}
+
+.card {
+  padding: 2rem;
+  border-radius: 15px;
+  height: 22rem;
+  width: 22%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.2);
+  transition: all 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.4);
+  transform: scale(1.05);
+}
+
+.card__logo {
+  border-radius: 10px;
+  background: linear-gradient(#6161c0, #a061a0);
+  color: white;
+  height: 60%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__text {
+  margin-top: 1rem;
+  font-weight: 400;
+  font-size: 1.9rem;
+}
+
+.card__desc p {
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 1.4rem;
+}
+
+.locations {
+  color: white;
+  padding: 3rem;
+  margin-top: 5rem;
+  width: 100%;
+  height: 30rem;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(85, 85, 85, 0.52),
+      rgb(117, 19, 93)
+    ),
+    url(/images/usmap.png);
+  background-size: cover;
+}
+
+.locations__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 7rem;
+  font-weight: light;
+  font-family: "Dongle", sans-serif;
+  width: 100%;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.description {
+  text-align: center;
+  width: 50%;
+  margin: 5rem auto 3rem auto;
+  font-family: "Dongle";
+  font-size: 2rem;
+  line-height: 1.8rem;
+}

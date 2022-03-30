@@ -21,7 +21,6 @@ mongoose.connect(url)
 
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
-
 app.use(morgan('tiny'));
 app.use(methodoverride('_method'));
 
