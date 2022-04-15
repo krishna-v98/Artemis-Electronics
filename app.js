@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const methodoverride = require('method-override');
 const mongoose = require('mongoose');
 const tradeRoutes = require('./routes/tradeRoutes');
-
+const mainRoutes = require('./routes/mainRoutes');
 
 const app = express();
 
@@ -28,13 +28,7 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.get('/about', (req, res) => {
-    res.render('about');
-});
-
-app.get('/contact', (req, res) => {
-    res.render('contact');
-});
+app.use('/', mainRoutes);
 
 app.use('/trades', tradeRoutes);
 

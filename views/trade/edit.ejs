@@ -20,11 +20,11 @@
       
       <div class="form-line">
         <label for="category">Category</label>
-        <input type="text" id="category" name="category" placeholder="Enter Category" value="<%= trade.category %> " />
+        <input type="text" id="category" name="category" placeholder="Enter Category" value="<%= trade.category %> " required/>
       </div>
       <div class="form-line">
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Enter Name" value="<%= trade.name %> " />
+        <input type="text" id="name" name="name" placeholder="Enter Name" value="<%= trade.name %> " required/>
       </div>
       <div class="form-line">
         <label for="image">Image Link</label>
@@ -32,7 +32,7 @@
       </div>
       <div class="form-line">
         <label for="price">Price</label>
-        <input type="text" id="price" name="price" placeholder="Enter Price" value="<%= trade.price %> " />
+        <input type="text" id="price" name="price" placeholder="Enter Price" value="<%= trade.price %> " required/>
       </div>
       <div class="form-line">
         <label for="status">Price</label>
@@ -40,7 +40,7 @@
       </div>
       <div class="form-line">
         <label for="description">Product description</label>
-        <textarea id="desc" cols="30" rows="5" name="description" placeholder="Give details about your product"><%= trade.description %> </textarea>
+        <textarea id="desc" cols="30" rows="5" name="description" placeholder="Give details about your product" minlength="10"><%= trade.description %> </textarea>
       </div>
       <div class="form-line">
         <input class="create-button" type="submit">

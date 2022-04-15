@@ -5,9 +5,9 @@
   margin: 0;
 }
 
-@media screen and (max-width:500px){
+@media screen and (max-width:1000px){
   *{
-    font-size: 50%;
+    font-size: 85%;
   }
 }
 
@@ -134,15 +134,4 @@ footer {
 }
 .footer-icons svg {
   margin-right: 1.5rem;
-}
-
-@media only screen and (max-width: 900px) {
-  * {
-    font-size: 70%;
-  }
-
-  svg {
-    width: 3rem;
-    height: 3rem;
-  }
 }

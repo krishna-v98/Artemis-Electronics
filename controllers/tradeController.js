@@ -34,7 +34,6 @@ exports.show = (req, res, next) => {
     model.findById(id)
         .then(item => {
             if (item) {
-                console.log(item);
                 res.render('./trade/show', { item: item });
             } else {
                 let err = new Error('Cannot find item with id \"' + id + '\"');
