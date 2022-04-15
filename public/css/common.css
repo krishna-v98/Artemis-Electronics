@@ -5,8 +5,8 @@
   margin: 0;
 }
 
-@media screen and (max-width:1000px){
-  *{
+@media screen and (max-width: 1000px) {
+  * {
     font-size: 85%;
   }
 }
@@ -134,4 +134,48 @@ footer {
 }
 .footer-icons svg {
   margin-right: 1.5rem;
+}
+
+#flash {
+  display: flex;
+  width: 25%;
+  margin: 2rem auto;
+}
+
+#flash ul {
+  width: 100%;
+  list-style: none;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+}
+
+.message svg {
+  margin-right: 1rem;
+}
+
+#flash ul li {
+  border-radius: 5px;
+  font-size: 1.2rem;
+  width: 100%;
+  display: inline-block;
+  padding: 1.5rem 2rem;
+  color: white;
+}
+
+.error {
+  background-color: rgba(254, 98, 98, 0.701);
+}
+
+.success {
+  background-color: rgba(98, 254, 145, 0.701);
+}
+
+.cross {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <%- include('../partials/fonts.ejs')%>
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="/css/common.css" />
+  <link rel="stylesheet" href="/css/new.css" />
+  <link rel="stylesheet" href="/css/login.css">
+</head>
+
+<body>
+  <%- include('../partials/header.ejs')%>
+  <main>
+    <div class="page-heading">Create a New Account</div>
+    <form class="new-trade-form" id="my_form" action="/users" method="POST">
+      <div class="form-line">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="firstName" placeholder="Enter firstName" required/>
+      </div>
+      <div class="form-line">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="lastName" placeholder="Enter lastName" required/>
+      </div>
+      <div class="form-line">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter Email" />
+      </div>
+      <div class="form-line">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter Password" required/>
+      </div>
+      <div class="form-line">
+        <input class="create-button" type="submit" value="Signup!">
+        <!-- <a class="create-button" href="javascript:{}" onclick="document.getElementById('my_form').submit();">Create Trade</a> -->
+      </div>
+    </form>
+  </main>
+  <%- include('../partials/footer.ejs')%>
+
+</body>
+
+</html>

@@ -7,6 +7,7 @@ const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 const tradeRoutes = require('./routes/tradeRoutes');
 const mainRoutes = require('./routes/mainRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 
@@ -27,11 +28,32 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan('tiny'));
 app.use(methodoverride('_method'));
 
+app.use(session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 1000 * 60 * 60 },
+    store: new MongoStore({ mongoUrl: url })
+}));
+
+app.use(flash());
+
+app.use((req, res, next) => {
+    console.log(req.session);
+    // console.log(req.session.user);
+    res.locals.user = req.session.user || null;
+    res.locals.successMessage = req.flash('success');
+    res.locals.errorMessage = req.flash('error');
+    next();
+});
+
 app.get('/', (req, res) => {
     res.render('index');
 });
 
 app.use('/', mainRoutes);
+
+app.use('/users', userRoutes);
 
 app.use('/trades', tradeRoutes);
 

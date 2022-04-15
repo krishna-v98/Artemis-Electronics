@@ -9,4 +9,19 @@ const userSchema = new Schema({
     password: { type: String, required: [true, 'Password required'] },
 });
 
+userSchema.pre('save', function (next) {
+    const user = this;
+    if (!user.isModified('password')) return next();
+    bcrypt.hash(user.password, 10)
+        .then(hash => {
+            user.password = hash;
+            next();
+        })
+        .catch(err => next(err));
+});
+
+userSchema.methods.comparePassword = function (password) {
+    return bcrypt.compare(password, this.password);
+};
+
 module.exports = mongoose.model('User', userSchema);

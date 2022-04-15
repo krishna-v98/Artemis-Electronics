@@ -24,17 +24,10 @@ exports.new = (req, res) => {
 exports.show = (req, res, next) => {
     let id = req.params.id;
 
-    if(!id.match(/^[0-9a-fA-F]{24}$/)){
-        let err = new Error('Invalid trade ID');
-        err.status = 400;
-        return next(err);
-    }
-    
-
-    model.findById(id)
+    model.findById(id).populate('author', 'firstName lastName')
         .then(item => {
             if (item) {
-                res.render('./trade/show', { item: item });
+                res.render('./trade/show', { item });
             } else {
                 let err = new Error('Cannot find item with id \"' + id + '\"');
                 err.status = 404;
@@ -51,7 +44,7 @@ exports.create = (req, res, next) => {
     input.category = input.category.trim();
     input.name = input.name.trim();
     let trade = new model(input);
-
+    trade.author = req.session.user;
     trade.save(trade) //should be trade.save not model.save
         .then(result => res.redirect('/trades'))
         .catch(err => {
@@ -65,11 +58,7 @@ exports.create = (req, res, next) => {
 exports.edit = (req, res, next) => {
     let id = req.params.id;
 
-    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
-        let err = new Error('Invalid trade ID');
-        err.status = 400;
-        return next(err);
-    }
+
 
     model.findById(id)
         .then(trade => {
@@ -90,12 +79,6 @@ exports.update = (req, res, next) => {
     trade.category = trade.category.trim();
     trade.name = trade.name.trim();
     let id = req.params.id;
-
-    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
-        let err = new Error('Invalid trade ID');
-        err.status = 400;
-        return next(err);
-    }
 
     model.findByIdAndUpdate(id, trade, { userFindAndModify: false, runValidators: true })
         .then(result => {
@@ -120,11 +103,7 @@ exports.update = (req, res, next) => {
 exports.delete = (req, res, next) => {
     let id = req.params.id;
 
-    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
-        let err = new Error('Invalid trade ID');
-        err.status = 400;
-        return next(err);
-    }
+
 
     model.findByIdAndDelete(id, { userFindAndModify: false })
         .then(result => {
