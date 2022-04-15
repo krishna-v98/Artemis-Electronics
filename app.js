@@ -2,6 +2,9 @@ const express = require('express');
 const morgan = require('morgan');
 const methodoverride = require('method-override');
 const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const flash = require('connect-flash');
 const tradeRoutes = require('./routes/tradeRoutes');
 const mainRoutes = require('./routes/mainRoutes');
 

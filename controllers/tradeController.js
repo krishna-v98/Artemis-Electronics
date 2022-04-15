@@ -1,4 +1,4 @@
-const model = require('../models/items');
+const model = require('../models/item');
 
 //show all
 exports.index = (req, res, next) => {
