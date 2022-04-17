@@ -1,11 +1,4 @@
-exports.validateId = (req, res, next) => {
-    let id = req.params.id;
-    if (!id.match(/^[0-9a-fA-F]{24}$/)) {
-        let err = new Error('Invalid ID');
-        err.status = 400;
-        next(err);
-    }
-};
+const Item = require('../models/item');
 
 exports.isLoggedIn = (req, res, next) => {
     if (req.session.user) {
@@ -25,4 +18,22 @@ exports.isGuest = (req, res, next) => {
         req.flash('error', 'Already Logged In');
         res.redirect('/users/profile');
     }
+};
+
+exports.isAuthor = (req, res, next) => {
+    let id = req.params.id;
+    Item.findById(id)
+        .then(item => {
+            if (item) {
+                if (item.author.equals(req.session.user)) {
+                    next();
+                }
+                else {
+                    let err = new Error('You are not the author of this item');
+                    err.status = 401;
+                    next(err);
+                }
+            }
+        })
+        .catch(err => next(err));
 };

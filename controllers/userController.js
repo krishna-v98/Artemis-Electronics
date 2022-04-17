@@ -11,9 +11,10 @@ exports.signup = (req, res, next) => {
 
 exports.profile = (req, res, next) => {
     let id = req.session.user;
-    User.findById(id)
-        .then(user => {
-            res.render('./user/profile', { user });
+    Promise.all([User.findById(id), Item.find({ author: id }).sort({ createdAt: -1 })])
+        .then(results => {
+            const [user, items] = results;
+            res.render('./user/profile', { user, items });
         })
         .catch(err => next(err));
 };

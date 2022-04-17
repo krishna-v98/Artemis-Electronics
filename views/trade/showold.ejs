@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <%- include('../partials/fonts.ejs')%>
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/trade.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <%- include('../partials/header.ejs')%>
+  <main>
+    <div class="item">
+      <div class="item__heading">
+        Details
+      </div>
+      <div class="item__details">
+        <div class="item__photo">
+          <img src="<%=item.imageLink%>" alt="" class="item__pic">
+          <div class="item__name"><%=item.name%></div>
+
+        </div>
+        <div class="item__options">
+          <div class="item__price">
+            <%= item.price%>
+            (<%= item.status%>)
+          </div>
+          <div class="item__trade">
+            <a class="trade-button">
+              Trade it
+            </a>
+            <a class="rate-button">
+              Rate it
+            </a>
+            <form class="edit-button" id="my_form" method="get" action="/trades/<%=item.id%>/edit">
+              <a href="javascript:{}" onclick="document.getElementById('my_form').submit();">
+                Edit
+              </a>
+            </form>
+            <form class="delete-button" action="/trades/<%=item.id%>?_method=DELETE" id="my_form1" method="post">
+              <a href="javascript:{}" onclick="document.getElementById('my_form1').submit();">
+                Delete
+              </a>
+            </form>
+          </div>
+          <div class="item__desc">
+            item by : <%= item.author.firstName+' '+item.author.lastName%> <br>
+            <%= item.description%>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  <%- include('../partials/footer.ejs')%>
+</body>
+
+</html>

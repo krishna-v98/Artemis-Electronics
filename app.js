@@ -39,7 +39,7 @@ app.use(session({
 app.use(flash());
 
 app.use((req, res, next) => {
-    console.log(req.session);
+    // console.log(req.session);
     // console.log(req.session.user);
     res.locals.user = req.session.user || null;
     res.locals.successMessage = req.flash('success');

@@ -6,9 +6,7 @@ const tradeSchema = new Schema({
     name: { type: String, required: [true, 'Name required for product'] },
     price: { type: String, required: [true, 'Price required for product'] },
     imageLink: {
-        type: String,
-        //regular expression for url format
-        match: [/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([1\-\.]{}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/, 'Please enter a valid URL']
+        type: String
     },
     description: {
         type: String,

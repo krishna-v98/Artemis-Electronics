@@ -1,0 +1,67 @@
+.item {
+  display: -ms-grid;
+  display: grid;
+  padding: 2rem;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 90%;
+  margin: 0 auto;
+  background-color: darkgrey;
+  border-radius: 10px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.item__picture {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  grid-column: span 2;
+  grid-row: span 4;
+  width: 100%;
+  border-right: 1px solid black;
+}
+
+.item__picture img {
+  margin: 0 auto;
+}
+
+.item__name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  grid-column: span 2;
+  font-size: 3rem;
+  padding: 1.5rem 2rem;
+}
+
+.item__status-price {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.5rem;
+  padding: 2rem;
+  grid-column: span 2;
+}
+
+.item__status-price span {
+  font-size: 1.8rem;
+}
+/*# sourceMappingURL=newtrade.css.map */
