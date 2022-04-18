@@ -17,9 +17,7 @@ const tradeSchema = new Schema({
         required: [true, 'product category is required']
     },
     status: {
-        type: String,
-        //enum to restrict status types
-        enum: ['available', 'sold']
+        type: String
     }
 }, { timestamps: true });
 

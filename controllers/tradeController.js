@@ -103,8 +103,6 @@ exports.update = (req, res, next) => {
 exports.delete = (req, res, next) => {
     let id = req.params.id;
 
-
-
     model.findByIdAndDelete(id, { userFindAndModify: false })
         .then(result => {
             if (result)

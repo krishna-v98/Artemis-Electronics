@@ -1,47 +1,96 @@
-.item{
-    display: grid;
-    padding: 2rem;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    width: 90%;
-    margin: 0 auto;
-    background-color: darkgrey;
-    // height: 10rem;
+.item {
+  display: grid;
+  padding: 2rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 6rem 6rem 6rem auto;
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 10px;
+  font-family: "Roboto serif", sans-serif;
+  height: auto;
+
+  &__picture {
+    padding: 3rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: span 2;
+    grid-row: span 4;
+    width: 100%;
+    // margin: 0 auto;
+    border-right: 1px solid rgb(127, 127, 127);
+    img {
+      margin: 0 auto;
+    }
+  }
+
+  &__name {
+    font-family: "Raleway", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: span 2;
+    // width: 50%;
+    font-size: 3rem;
+    padding: 1rem 0 0 2rem;
+  }
+
+  &__status-price {
+    //   margin-top: -2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    padding: 0 0 0 2rem;
+    grid-column: span 2;
+  }
+
+  &__buttons {
+    width: 70%;
+    margin: 1rem auto 0 auto;
+    display: flex;
+    grid-column: span 2;
+    justify-content: space-around;
+    padding-left: 2rem;
+    align-items: center;
+    input {
+      font-family: "Roboto serif", sans-serif;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      height: 2.5rem;
+      border-radius: 10px;
+      border: 1px solid transparent;
+    }
+  }
+
+  &__desc {
+    line-height: 2rem;
+    background-color: rgba(243, 243, 243, 0.625);
+    font-size: 1rem;
+    margin-left: 4rem;
+    margin-right: 2rem;
+    grid-column: span 2;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding: 1rem 1.5rem;
     border-radius: 10px;
-    font-family: 'Raleway', sans-serif;
-    
-    &__picture{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        grid-column: span 2;
-        grid-row: span 4;
-        width: 100%;
-        // margin: 0 auto;
-        border-right: 1px solid black;
-        img{
-            margin: 0 auto;
-        }
-    }
+    height: auto;
+  }
+}
 
-    &__name{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        grid-column: span 2;
-        // width: 50%;
-        font-size: 3rem;
-        padding: 1.5rem 2rem;
-    }
+footer {
+  margin-top: 0;
+}
 
-    &__status-price{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.5rem;
-        padding: 2rem;
-        grid-column: span 2;
-        span{
-            font-size: 1.8rem;
-        }
-    }
+#price {
+  font-size: 2rem;
+}
+
+#status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(4, 215, 4, 0.664);
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
 }

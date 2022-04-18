@@ -14,15 +14,6 @@
 <body>
   <%- include('../partials/header.ejs')%>
   <main>
-    <%= item.name %> <br>
-    <%= item.price %> <br>
-    <%= item.description %> <br>
-    <%= item.author.firstName %> <br>
-    <%= item.author.lastName %> <br>
-    <%= item.imageLink %> <br>
-    <%= item.status %> <br>
-    <%= item.createdAt %> <br>
-
     <% 
         let status = item.status;
        status = status.charAt(0).toUpperCase() + status.slice(1);   
@@ -41,11 +32,27 @@
         <%= item.name %>
       </div>
       <div class="item__status-price">
-        <%= status %> &nbsp; &nbsp; <span><%= price %></span>
+       <span id="status"><%= status %></span>  &nbsp; &nbsp; <span id="price"><%= price %></span>
+      </div>
+      <div class="item__buttons">
+        <input type="submit" value="Rate">
+        <input type="submit" value="Trade">
+        <% if(user == item.author.id){ %>
+        <form method="get" action="/trades/<%=item.id%>/edit">
+          <input type="submit" value="Edit">
+        </form>
+        <form  action="/trades/<%=item.id%>?_method=DELETE" method="post">
+          <input type="submit" value="Delete">
+        </form>
+        <% } %>
+      </div>
+      <div class="item__desc">
+        <%= item.description %>
       </div>
     </div>
   </main>
   <%- include('../partials/footer.ejs')%>
+  <script src="/javascript/status.js"></script>
 </body>
 
 </html>

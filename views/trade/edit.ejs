@@ -13,18 +13,17 @@
 
 <body>
   <%- include('../partials/header.ejs')%>
+  <div id="dummy"><%=trade.status%></div>
   <main>
     <div class="page-heading">Start a Trade</div>
-
     <form class="new-trade-form" id="my_form" action="/trades/<%=trade.id%>?_method=PUT" method="POST">
-      
       <div class="form-line">
         <label for="category">Category</label>
-        <input type="text" id="category" name="category" placeholder="Enter Category" value="<%= trade.category %> " required/>
+        <input type="text" id="category" name="category" placeholder="Enter Category" value="<%= trade.category %> " required />
       </div>
       <div class="form-line">
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Enter Name" value="<%= trade.name %> " required/>
+        <input type="text" id="name" name="name" placeholder="Enter Name" value="<%= trade.name %> " required />
       </div>
       <div class="form-line">
         <label for="image">Image Link</label>
@@ -32,11 +31,17 @@
       </div>
       <div class="form-line">
         <label for="price">Price</label>
-        <input type="text" id="price" name="price" placeholder="Enter Price" value="<%= trade.price %> " required/>
+        <input type="text" id="price" name="price" placeholder="Enter Price" value="<%= trade.price %> " required />
       </div>
-      <div class="form-line">
-        <label for="status">Price</label>
-        <input type="text" id="status" name="status" placeholder="Enter Status" value="<%= trade.status %> " />
+      <div class="form-line rad">
+        <label for="status">Status</label>
+        <!-- <input type="text" id="status" name="status" placeholder="Enter Status" required/> -->
+        <div class="radio">
+          <input type="radio" name="status" id="available" value="available" >
+          <label for="available"> Available</label>
+          <input type="radio" name="status" id="sold" value="sold">
+          <label for="sold"> Sold</label>
+        </div>
       </div>
       <div class="form-line">
         <label for="description">Product description</label>
@@ -49,6 +54,16 @@
     </form>
   </main>
   <%- include('../partials/footer.ejs')%>
+  <script>
+    var dummy = document.getElementById('dummy');
+    dummy.style.display = "none";
+    if(dummy.innerHTML == "available"){
+      document.getElementById("available").checked = true;
+    }
+    else{
+      document.getElementById("sold").checked = true;
+    }
+  </script>
 </body>
 
 </html>
