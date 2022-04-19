@@ -11,3 +11,4 @@ close1.addEventListener('click', () => {
 close2.addEventListener('click', () => {
     flash.style.display = 'none';
 });
+

@@ -11,7 +11,7 @@
   <title>Document</title>
 </head>
 
-<body>
+<body id="page">
   <%- include('../partials/header.ejs')%>
   <main>
     <% 
@@ -21,7 +21,6 @@
        if(!price.includes('$')){
          price = '$'+price;
        }
-
     %>
 
     <div class="item">
@@ -32,7 +31,11 @@
         <%= item.name %>
       </div>
       <div class="item__status-price">
-       <span id="status"><%= status %></span>  &nbsp; &nbsp; <span id="price"><%= price %></span>
+        <span id="status"><%= status %></span> &nbsp; &nbsp; <span id="price"><%= price %></span>
+      </div>
+      <div class="item__posted">
+        Posted On: <%= item.createdAt.toLocaleString() %> <br> <br>
+        Last Changes Made: <%= item.updatedAt.toLocaleString() %>
       </div>
       <div class="item__buttons">
         <input type="submit" value="Rate">
@@ -41,13 +44,60 @@
         <form method="get" action="/trades/<%=item.id%>/edit">
           <input type="submit" value="Edit">
         </form>
-        <form  action="/trades/<%=item.id%>?_method=DELETE" method="post">
+        <form action="/trades/<%=item.id%>?_method=DELETE" method="post">
           <input type="submit" value="Delete">
         </form>
         <% } %>
       </div>
       <div class="item__desc">
         <%= item.description %>
+      </div>
+    </div>
+    <div class="comments">
+      <div class="comments__title">
+        Reviews:
+      </div>
+      <div class="comments__1">
+        <div class="comments__1-dp">
+          <img src="https://source.unsplash.com/mEZ3PoFGs_k" alt="">
+        </div>
+        <div class="comments__1-name">
+          Sarah Cooper
+        </div>
+        <div class="comments__1-date">
+         Posted: <%= item.updatedAt.toLocaleString() %>
+        </div>
+        <div class="comments__1-comment">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem aut aliquid dignissimos ad voluptatum consequuntur consectetur id necessitatibus sunt dolorum, maiores distinctio ipsam pariatur laborum et dolorem numquam ducimus, reiciendis ullam fugiat placeat facere voluptatem? Nemo, voluptatum sit! Officia, ullam.
+        </div>
+      </div>
+      <div class="comments__1">
+        <div class="comments__1-dp">
+          <img src="https://source.unsplash.com/rDEOVtE7vOs" alt="">
+        </div>
+        <div class="comments__1-name">
+          Beth Bradshaw
+        </div>
+        <div class="comments__1-date">
+         Posted: <%= item.updatedAt.toLocaleString() %>
+        </div>
+        <div class="comments__1-comment">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem aut aliquid dignissimos ad voluptatum consequuntur consectetur id necessitatibus sunt dolorum, maiores distinctio ipsam pariatur laborum et dolorem numquam ducimus, reiciendis ullam fugiat placeat facere voluptatem? Nemo, voluptatum sit! Officia, ullam.
+        </div>
+      </div>
+      <div class="comments__1">
+        <div class="comments__1-dp">
+          <img src="https://source.unsplash.com/D9HRdD46K0o" alt="">
+        </div>
+        <div class="comments__1-name">
+          Hari Shankar
+        </div>
+        <div class="comments__1-date">
+         Posted: <%= item.updatedAt.toLocaleString() %>
+        </div>
+        <div class="comments__1-comment">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem aut aliquid dignissimos ad voluptatum consequuntur consectetur id necessitatibus sunt dolorum, maiores distinctio ipsam pariatur laborum et dolorem numquam ducimus, reiciendis ullam fugiat placeat facere voluptatem? Nemo, voluptatum sit! Officia, ullam.
+        </div>
       </div>
     </div>
   </main>

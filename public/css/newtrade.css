@@ -4,8 +4,8 @@
   padding: 2rem;
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr;
-  -ms-grid-rows: 6rem 6rem 6rem auto;
-      grid-template-rows: 6rem 6rem 6rem auto;
+  -ms-grid-rows: 6rem 6rem 6rem 6rem auto;
+      grid-template-rows: 6rem 6rem 6rem 6rem auto;
   width: 90%;
   margin: 0 auto;
   border-radius: 10px;
@@ -25,7 +25,7 @@
       -ms-flex-align: center;
           align-items: center;
   grid-column: span 2;
-  grid-row: span 4;
+  grid-row: span 5;
   width: 100%;
   border-right: 1px solid #7f7f7f;
 }
@@ -65,6 +65,23 @@
   grid-column: span 2;
 }
 
+.item__posted {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  grid-column: span 2;
+  grid-row: span 1;
+  font-size: 1rem;
+  padding: 0 0 0 2rem;
+  text-align: center;
+}
+
 .item__buttons {
   width: 70%;
   margin: 1rem auto 0 auto;
@@ -101,6 +118,7 @@
   padding: 1rem 1.5rem;
   border-radius: 10px;
   height: auto;
+  white-space: pre-wrap;
 }
 
 footer {
@@ -124,5 +142,56 @@ footer {
   background-color: rgba(4, 215, 4, 0.664);
   padding: 0.7rem 1rem;
   border-radius: 10px;
+}
+
+.comments {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 4rem;
+  font-family: "Roboto serif", sans-serif;
+}
+
+.comments__title {
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.comments__1 {
+  margin-bottom: 2rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 10% 90%;
+      grid-template-columns: 10% 90%;
+}
+
+.comments__1-dp {
+  grid-row: span 3;
+  margin-right: 2rem;
+}
+
+.comments__1-dp img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+}
+
+.comments__1-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.comments__1-date {
+  font-size: 0.8rem;
+  color: #7f7f7f;
+  margin-bottom: 1rem;
+}
+
+.comments__1-comment {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-bottom: 1rem;
 }
 /*# sourceMappingURL=newtrade.css.map */

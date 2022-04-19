@@ -78,12 +78,15 @@ exports.update = (req, res, next) => {
     let trade = req.body;
     trade.category = trade.category.trim();
     trade.name = trade.name.trim();
+    trade.description = trade.description.trim();
     let id = req.params.id;
 
     model.findByIdAndUpdate(id, trade, { userFindAndModify: false, runValidators: true })
         .then(result => {
-            if (result)
+            if (result) {
                 res.redirect('/trades/' + id);
+                // console.log(result);
+            }
             else {
                 let err = new Error('Cannot find item to update with ID ' + id);
                 err.status = 404;
