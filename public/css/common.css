@@ -110,7 +110,7 @@ nav ul li a {
 footer {
   margin-top: 3rem;
   width: 100%;
-  height: 10rem;
+  height: 7rem;
   background: linear-gradient(black, gray);
   color: white;
   padding: 3rem;
@@ -121,12 +121,14 @@ footer {
 }
 
 .footer-text__big {
-  font-family: "Dongle", sans-serif;
-  font-size: 1.8rem;
+  font-family: "Roboto serif", sans-serif;
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 .footer-text_cpy {
   font-size: 0.8rem;
+  margin-bottom: 0;
 }
 .footer-icons a {
   color: white;
@@ -137,9 +139,24 @@ footer {
 }
 
 #flash {
-  display: flex;
+  position: absolute;
   width: 25%;
   margin: 2rem auto;
+  transition: all 0.2s ease-in-out;
+  animation: fadeIn ease 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    /* top: -200px; */
+  }
+  100% {
+    opacity: 1;
+    /* top: 0px; */
+  }
 }
 
 #flash ul {
@@ -162,7 +179,7 @@ footer {
   width: 100%;
   display: inline-block;
   padding: 1.5rem 2rem;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .error {
@@ -170,7 +187,7 @@ footer {
 }
 
 .success {
-  background-color: rgba(98, 254, 145, 0.701);
+  background-color: rgba(54, 251, 113, 0.701);
 }
 
 .cross {

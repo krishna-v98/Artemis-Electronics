@@ -7,13 +7,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%- include('../partials/fonts.ejs')%>
   <link rel="stylesheet" href="/css/common.css" />
+  <link rel="stylesheet" href="/css/profile.css" />
   <title><%= user.firstName+' '+user.lastName %></title>
 </head>
 
 <body>
   <%- include('../partials/header.ejs')%>
   <%- include('../partials/flash.ejs') %>
-  Hi <h1><%= user.firstName %></h1>
+  <% user.firstName = user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1); 
+  user.lastName = user.lastName.charAt(0).toUpperCase() + user.lastName.slice(1); %>
+  %>
+
+  <h1 class="profile-heading">Profile</h1>
+  <div class="profile">
+    <div class="profile__details">
+      <div class="profile__details-img">
+        <img src="https://source.unsplash.com/WNoLnJo7tS8" alt="">
+      </div>
+      <div class="profile__details-name">
+        <%= user.firstName+' '+user.lastName %>
+      </div>
+      <div class="profile__details-email">
+        <%= user.email %>
+      </div>
+      <div class="profile__details-created">
+        Active Since: March, 2021
+      </div>
+    </div>
+    <div class="profile__trades">
+
+      <% if(items.length == 0) { %>
+      <div class="profile__trades-empty">
+        <h2>No trades yet!</h2>
+        <p>Start trading now!</p>
+      </div>
+      <% } else { %>
+      <div class="profile__trades-list">
+        <div class="profile__trades-list-heading">
+          Your Trades
+        </div>
+        <% for(var i = 0; i < items.length; i++) { %>
+        <a href="/trades/<%=items[i].id%>" class="profile__trades-item">
+          <div class="profile__trades-item-img">
+            <img src="<%= items[i].imageLink %>" alt="No image">
+          </div>
+          <div class="profile__trades-item-name">
+            <%= items[i].name %>
+          </div>
+          <div class="profile__trades-item-price">
+            <%= items[i].price %>
+          </div>
+          <div class="profile__trades-item-date">
+            <%= items[i].createdAt.toLocaleString() %>
+          </div>
+        </a>
+        <% } } %>
+      </div>
+    </div>
+  </div>
   <%- include('../partials/footer.ejs')%>
 </body>
 

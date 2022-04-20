@@ -2,7 +2,6 @@ const model = require('../models/item');
 
 //show all
 exports.index = (req, res, next) => {
-
     let names = [];
     model.find()
         .then(trades => {
@@ -13,8 +12,6 @@ exports.index = (req, res, next) => {
             res.render('./trade/index', { trades: trades, names: uniqueNames });
         })
         .catch(err => next(err));
-
-
 };
 
 exports.new = (req, res) => {
@@ -43,10 +40,15 @@ exports.create = (req, res, next) => {
     let input = req.body;
     input.category = input.category.trim();
     input.name = input.name.trim();
+    input.description = input.description.trim();
+    input.imageLink = input.imageLink.trim();
     let trade = new model(input);
     trade.author = req.session.user;
     trade.save(trade) //should be trade.save not model.save
-        .then(result => res.redirect('/trades'))
+        .then(() => {
+            req.flash('success', 'Trade created successfully');
+            res.redirect('/trades');
+        })
         .catch(err => {
             if (err.name == 'ValidationError') {
                 err.status = 400;
@@ -57,9 +59,6 @@ exports.create = (req, res, next) => {
 
 exports.edit = (req, res, next) => {
     let id = req.params.id;
-
-
-
     model.findById(id)
         .then(trade => {
             if (trade)
@@ -79,6 +78,7 @@ exports.update = (req, res, next) => {
     trade.category = trade.category.trim();
     trade.name = trade.name.trim();
     trade.description = trade.description.trim();
+    trade.imageLink = trade.imageLink.trim();
     let id = req.params.id;
 
     model.findByIdAndUpdate(id, trade, { userFindAndModify: false, runValidators: true })
@@ -98,14 +98,10 @@ exports.update = (req, res, next) => {
                 err.status = 400;
             next(err);
         });
-
-
-
 };
 
 exports.delete = (req, res, next) => {
     let id = req.params.id;
-
     model.findByIdAndDelete(id, { userFindAndModify: false })
         .then(result => {
             if (result)
