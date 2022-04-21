@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%- include('../partials/fonts.ejs')%>
-  <title>Document</title>
+  <title>Edit <%=trade.name%></title>
   <link rel="stylesheet" href="/css/common.css" />
   <link rel="stylesheet" href="/css/new.css" />
 </head>
@@ -37,7 +37,7 @@
         <label for="status">Status</label>
         <!-- <input type="text" id="status" name="status" placeholder="Enter Status" required/> -->
         <div class="radio">
-          <input type="radio" name="status" id="available" value="available" >
+          <input type="radio" name="status" id="available" value="available">
           <label for="available"> Available</label>
           <input type="radio" name="status" id="sold" value="sold">
           <label for="sold"> Sold</label>
@@ -57,10 +57,9 @@
   <script>
     var dummy = document.getElementById('dummy');
     dummy.style.display = "none";
-    if(dummy.innerHTML == "available"){
+    if (dummy.innerHTML == "available") {
       document.getElementById("available").checked = true;
-    }
-    else{
+    } else {
       document.getElementById("sold").checked = true;
     }
   </script>
