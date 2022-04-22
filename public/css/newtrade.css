@@ -23,6 +23,10 @@ a:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -35,9 +39,19 @@ a:hover {
   border-right: 1px solid darkgrey;
 }
 
+.item__picture svg {
+  margin-bottom: 1rem;
+  color: #424242;
+}
+
 .item__picture img {
   margin: 0 auto;
   width: 50%;
+}
+
+.item__picture h3 {
+  color: #424242;
+  font-size: 1.5rem;
 }
 
 .item__name {

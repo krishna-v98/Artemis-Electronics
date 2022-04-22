@@ -9,7 +9,7 @@ flash.style.left = (window.innerWidth / 2) - (flash.offsetWidth / 2) + 'px';
 setTimeout(() => {
     flash.style.opacity = '0';
     flash.style.top = '-200px';
-}, 2000);
+}, 3000);
 
 window.addEventListener('load', setTimeout);
 

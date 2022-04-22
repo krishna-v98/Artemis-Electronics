@@ -31,7 +31,8 @@ exports.isAuthor = (req, res, next) => {
                 else {
                     let err = new Error('You are not the author of this item');
                     err.status = 401;
-                    next(err);
+                    req.flash('error', err.message);
+                    res.redirect('/trades/'+id);
                 }
             }
         })

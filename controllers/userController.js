@@ -32,7 +32,7 @@ exports.create = (req, res, next) => {
                 return res.redirect('/users/signup');
             }
             if (err.code === 11000) {
-                req.flash('error', 'User already exists');
+                req.flash('error', 'Email already in use');
                 return res.redirect('/users/signup');
             }
             next(err);
