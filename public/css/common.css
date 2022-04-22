@@ -121,9 +121,9 @@ footer {
 }
 
 .footer-text__big {
-  font-family: "Roboto serif", sans-serif;
+  font-family:  sans-serif;
   font-size: 1rem;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 .footer-text_cpy {
@@ -195,4 +195,5 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-left: 1rem;
 }

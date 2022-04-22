@@ -52,6 +52,8 @@ exports.create = (req, res, next) => {
         .catch(err => {
             if (err.name == 'ValidationError') {
                 err.status = 400;
+                req.flash('error', err.message);
+                res.redirect('back');
             }
             next(err);
         });
@@ -94,9 +96,11 @@ exports.update = (req, res, next) => {
             }
         })
         .catch(err => {
-            if (err.name === 'ValidationError')
+            if (err.name === 'ValidationError') {
                 err.status = 400;
-            next(err);
+                req.flash('error', err.message);
+                res.redirect('back');
+            } next(err);
         });
 };
 

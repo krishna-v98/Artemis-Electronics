@@ -1,3 +1,12 @@
+.logo_login a:hover {
+  color: white;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
 .profile {
   font-family: "Roboto serif", sans-serif;
   width: 80%;
@@ -23,11 +32,11 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 30%;
   padding-right: auto;
 }
@@ -36,7 +45,7 @@
   width: 100%;
   height: 20rem;
   -o-object-fit: contain;
-  object-fit: contain;
+     object-fit: contain;
   border-radius: 50%;
 }
 
@@ -65,19 +74,8 @@
 }
 
 .profile__trades-empty {
-  background-image: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgba(54, 54, 54, 0.782)),
-      to(rgba(0, 0, 0, 0.666))
-    ),
-    url("https://source.unsplash.com/FO7JIlwjOtU");
-  background-image: linear-gradient(
-      rgba(54, 54, 54, 0.782),
-      rgba(0, 0, 0, 0.666)
-    ),
-    url("https://source.unsplash.com/FO7JIlwjOtU");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(54, 54, 54, 0.782)), to(rgba(0, 0, 0, 0.666))), url("https://source.unsplash.com/FO7JIlwjOtU");
+  background-image: linear-gradient(rgba(54, 54, 54, 0.782), rgba(0, 0, 0, 0.666)), url("https://source.unsplash.com/FO7JIlwjOtU");
   background-size: cover;
   background-position: center;
   border-radius: 10px;
@@ -86,15 +84,15 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   height: 100%;
 }
 
@@ -115,8 +113,8 @@
   display: grid;
   grid-gap: 1.5rem;
   padding: 1rem 3rem;
-  -ms-grid-columns: (1fr) [3];
-  grid-template-columns: repeat(3, 1fr);
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
 }
 
 .profile__trades-list-heading {
@@ -134,25 +132,24 @@
   color: black;
   display: -ms-grid;
   display: grid;
-  -webkit-column-gap: 1rem;
-  column-gap: 1rem;
   -ms-grid-columns: 30% 70%;
-  grid-template-columns: 30% 70%;
+      grid-template-columns: 30% 70%;
 }
 
 .profile__trades-item-img {
-  grid-row: span 3;
+  grid-row: span 4;
 }
 
 .profile__trades-item-img img {
   width: 5rem;
   height: 5rem;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   border-radius: 50%;
 }
 
 .profile__trades-item-name {
+  margin-left: 1rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -161,17 +158,44 @@
 }
 
 .profile__trades-item-price {
+  margin-left: 1rem;
   font-size: 1rem;
   font-weight: 100;
   color: grey;
 }
 
 .profile__trades-item-date {
+  margin-left: 1rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   font-size: 0.8rem;
   color: grey;
   font-weight: 100;
+}
+
+.profile__trades-item-buttons {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.profile__trades-item-buttons a {
+  color: #424242;
+}
+
+.profile__trades-item-buttons:last-child {
+  color: red;
+  cursor: pointer;
+}
+
+.modal {
+  color: black;
 }
 /*# sourceMappingURL=profile.css.map */

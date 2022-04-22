@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%- include('../partials/fonts.ejs')%>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/common.css" />
   <link rel="stylesheet" href="/css/profile.css" />
   <title><%= user.firstName+' '+user.lastName %></title>
@@ -47,7 +48,8 @@
           Your Trades
         </div>
         <% for(var i = 0; i < items.length; i++) { %>
-        <a href="/trades/<%=items[i].id%>" class="profile__trades-item">
+        <div class="profile__trades-item">
+
           <div class="profile__trades-item-img">
             <img src="<%= items[i].imageLink %>" alt="No image">
           </div>
@@ -55,17 +57,53 @@
             <%= items[i].name %>
           </div>
           <div class="profile__trades-item-price">
+            <% if(!items[i].price.includes('$')) { %>
+            $<%= items[i].price %>
+            <% }else{ %>
             <%= items[i].price %>
+            <% } %>
           </div>
           <div class="profile__trades-item-date">
             <%= items[i].createdAt.toLocaleString() %>
           </div>
-        </a>
+          <div class="profile__trades-item-buttons">
+            <a href="/trades/<%=items[i].id%> ">Open</a>
+            <a href="/trades/<%=items[i].id%>/edit">Edit</a>
+            <a class="profile__trades-item-buttons-delete" data-toggle="modal" data-target="#deleteModal">Delete</a>
+
+            <!-- Modal -->
+            <form action="/trades/<%=items[i].id%>?_method=DELETE" method="post">
+              <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="deleteModalLabel">Delete</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      Are you Sure you want to delete this item?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-danger"> Delete </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
         <% } } %>
       </div>
     </div>
   </div>
   <%- include('../partials/footer.ejs')%>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 
 </html>

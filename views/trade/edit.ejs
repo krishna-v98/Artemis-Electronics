@@ -13,9 +13,10 @@
 
 <body>
   <%- include('../partials/header.ejs')%>
+  <%- include('../partials/flash.ejs') %>
   <div id="dummy"><%=trade.status%></div>
   <main>
-    <div class="page-heading">Start a Trade</div>
+    <div class="page-heading">Edit your Trade</div>
     <form class="new-trade-form" id="my_form" action="/trades/<%=trade.id%>?_method=PUT" method="POST">
       <div class="form-line">
         <label for="category">Category</label>
@@ -31,7 +32,7 @@
       </div>
       <div class="form-line">
         <label for="price">Price</label>
-        <input type="text" id="price" name="price" placeholder="Enter Price" value="<%= trade.price %> " required />
+        <input type="text" id="price" name="price" placeholder="Enter Price" value="<%= trade.price %>" required />
       </div>
       <div class="form-line rad">
         <label for="status">Status</label>

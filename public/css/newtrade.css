@@ -37,7 +37,7 @@ a:hover {
 
 .item__picture img {
   margin: 0 auto;
-  width: 20rem;
+  width: 50%;
 }
 
 .item__name {
