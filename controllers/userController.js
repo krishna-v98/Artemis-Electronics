@@ -11,7 +11,7 @@ exports.signup = (req, res, next) => {
 
 exports.profile = (req, res, next) => {
     let id = req.session.user;
-    Promise.all([User.findById(id), Item.find({ author: id }).sort({ createdAt: -1 })])
+    Promise.all([User.findById(id).populate('wishlist'), Item.find({ author: id }).sort({ createdAt: -1 })])
         .then(results => {
             const [user, items] = results;
             res.render('./user/profile', { user, items });
@@ -67,6 +67,9 @@ exports.authenticate = (req, res, next) => {
         })
         .catch(err => next(err));
 };
+
+
+
 
 exports.logout = (req, res, next) => {
     req.session.destroy(err => {

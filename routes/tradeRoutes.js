@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/tradeController');
-const { isAuthor, isLoggedIn } = require('../middlewares/auth');
+const { isAuthor, isLoggedIn, isNotAuthor } = require('../middlewares/auth');
 const { validateId, validateTrade, validateResult } = require('../middlewares/validator');
 
 router.get('/', controller.index);
@@ -19,5 +19,11 @@ router.get('/:id/edit', validateId, isLoggedIn, isAuthor, controller.edit);
 router.put('/:id', validateId, isLoggedIn, isAuthor, validateTrade, validateResult, controller.update);
 
 router.delete('/:id', validateId, isLoggedIn, isAuthor, controller.delete);
+
+//post to add item to wishlist
+router.post('/:id/wishlist', validateId, isLoggedIn, isNotAuthor, controller.addTowishlist);
+
+//delete to remove item from wishlist
+router.delete('/:id/wishlist', validateId, isLoggedIn, isNotAuthor, controller.removeFromWishlist);
 
 module.exports = router;

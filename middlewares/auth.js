@@ -32,9 +32,29 @@ exports.isAuthor = (req, res, next) => {
                     let err = new Error('You are not the author of this item');
                     err.status = 401;
                     req.flash('error', err.message);
-                    res.redirect('/trades/'+id);
+                    res.redirect('/trades/' + id);
                 }
             }
         })
+        .catch(err => next(err));
+};
+
+exports.isNotAuthor = (req, res, next) => {
+    let id = req.params.id;
+    Item.findById(id)
+        .then(item => {
+            if (item) {
+                if (item.author.equals(req.session.user)) {
+                    let err = new Error('You are already the author of this item');
+                    err.status = 401;
+                    req.flash('error', err.message);
+                    res.redirect('/trades/' + id);
+                }
+                else {
+                    next();
+                }
+            }
+        }
+        )
         .catch(err => next(err));
 };

@@ -7,6 +7,7 @@ const userSchema = new Schema({
     lastName: { type: String, required: [true, 'Last name required'] },
     email: { type: String, required: [true, 'Email required'], unique: true },
     password: { type: String, required: [true, 'Password required'] },
+    wishlist: [{ type: Schema.Types.ObjectId, ref: 'Trade' }]
 });
 
 userSchema.pre('save', function (next) {

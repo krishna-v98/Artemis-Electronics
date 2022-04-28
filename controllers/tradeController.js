@@ -1,4 +1,5 @@
 const model = require('../models/item');
+const User = require('../models/user');
 
 //show all
 exports.index = (req, res, next) => {
@@ -118,3 +119,69 @@ exports.delete = (req, res, next) => {
         })
         .catch(err => next(err));
 };
+
+exports.addTowishlist = (req, res, next) => {
+    let id = req.params.id;
+    let user = req.session.user;
+    console.log(user);
+    console.log(id);
+    Promise.all([User.findById(user), model.findById(id)])
+        .then(results => {
+            const [user, item] = results;
+            if (!item) {
+                let err = new Error('Cannot find item with id \"' + id + '\"');
+                err.status = 404;
+                req.flash('error', err.message);
+                return res.redirect('back');
+            }
+
+            if (!user.wishlist.includes(item._id)) {
+                user.wishlist.push(item);
+                user.save()
+                    .then(() => {
+                        req.flash('success', 'Item added to wish list');
+                        res.redirect('/users/profile');
+                    }
+                    )
+                    .catch(err => next(err));
+            }
+            else {
+                req.flash('error', 'Item already in wish list');
+                res.redirect('back');
+            }
+        }
+        )
+        .catch(err => next(err));
+}
+
+exports.removeFromWishlist = (req, res, next) => {
+    let id = req.params.id;
+    let user = req.session.user;
+    Promise.all([User.findById(user), model.findById(id)])
+
+        .then(results => {
+            const [user, item] = results;
+            if (!item) {
+                let err = new Error('Cannot find item with id \"' + id + '\"');
+                err.status = 404;
+                req.flash('error', err.message);
+                return res.redirect('back');
+            }
+            if (user.wishlist.includes(item._id)) {
+                user.wishlist.pull(item);
+                user.save()
+                    .then(() => {
+                        req.flash('success', 'Item removed from wish list');
+                        res.redirect('/users/profile');
+                    }
+                    )
+                    .catch(err => next(err));
+            }
+            else {
+                req.flash('error', 'Item not in wish list');
+                res.redirect('back');
+            }
+        }
+        )
+        .catch(err => next(err));
+}
