@@ -111,7 +111,9 @@
 
   <div class="wishlist">
     <% user.wishlist.forEach(item => {%>
-    <%=item.name%> <br>
+    <a href="/trades/<%=item.id%>">
+      <%=item.name%>
+    </a> <br>
     <%= item.price %> <br>
     <%= item.imageLink %> <br>
     <%= item.createdAt.toLocaleString() %> <br>

@@ -21,11 +21,13 @@ exports.new = (req, res) => {
 
 exports.show = (req, res, next) => {
     let id = req.params.id;
-
-    model.findById(id).populate('author', 'firstName lastName')
-        .then(item => {
+    let user = req.session.user;
+    //promise all to get item and user ownned items
+    Promise.all([model.findById(id).populate('author', 'firstName lastName'), model.find({ author: user }).sort({ createdAt: -1 })])
+        .then(results => {
+            const [item, items] = results;
             if (item) {
-                res.render('./trade/show', { item });
+                res.render('./trade/show', { item, items});
             } else {
                 let err = new Error('Cannot find item with id \"' + id + '\"');
                 err.status = 404;

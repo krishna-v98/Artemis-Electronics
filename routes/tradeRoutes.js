@@ -26,4 +26,10 @@ router.post('/:id/wishlist', validateId, isLoggedIn, isNotAuthor, controller.add
 //delete to remove item from wishlist
 router.delete('/:id/wishlist', validateId, isLoggedIn, isNotAuthor, controller.removeFromWishlist);
 
+// router.get('/:id/trades/:id/exchange/:id2', (req, res, next) => {
+//     let id = req.params.id;
+//     let id2 = req.params.id2;
+//     res.send(id + ' ' + id2);
+// });
+
 module.exports = router;

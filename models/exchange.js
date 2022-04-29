@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const exchangeSchema = new Schema({
     initiator: { type: Schema.Types.ObjectId, ref: 'User' },
     responder: { type: Schema.Types.ObjectId, ref: 'User' },
-    item: { type: Schema.Types.ObjectId, ref: 'Item' },
+    initiateItem: { type: Schema.Types.ObjectId, ref: 'Item' },
+    respondItem: { type: Schema.Types.ObjectId, ref: 'Item' },
     status: {
         type: String
     }
