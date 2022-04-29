@@ -1,52 +1,63 @@
-const item = require("../models/item");
-const user = require("../models/user");
-const exchange = require("../models/exchange");
+const Item = require('../models/item');
+const User = require('../models/user');
+const Exchange = require('../models/exchange');
+
+exports.index = (req, res, next) => {
+    let id = req.session.user;
+    // Exchange.find({ initiator: id })
+    //     .populate('initiator', 'firstName lastName')
+    //     .populate('responder', 'firstName lastName')
+    //     .populate('initiateItem', 'name')
+    //     .populate('respondItem', 'name')
+    //     .then(exchanges => {
+    //         res.render('./trade/exchanges', { exchanges });
+    //     })
+    //     .catch(err => next(err));
+    res.send('Not implemented');
+}
 
 exports.exchange = (req, res, next) => {
-    let id = req.params.id;
-    let user = req.session.user;
-    let id2 = req.params.id2;
-    Promise.all([user.findById(user), item.findById(id), item.findById(id2)])
+    let respondItem = req.params.id1;
+    let initiateItem = req.params.id2;
+    let initiator = req.session.user;
+
+    Promise.all([User.findById(initiator), Item.findById(respondItem), Item.findById(initiateItem)])
         .then(results => {
-            const [user, item1, item2] = results;
-            if (!item1) {
-                let err = new Error('Cannot find item with id \"' + id + '\"');
+            const [initiator, respondItem, initiateItem] = results;
+            if (!respondItem) {
+                let err = new Error('Cannot find item with id \"' + respondItem + '\"');
                 err.status = 404;
                 req.flash('error', err.message);
                 return res.redirect('back');
             }
-            if (!item2) {
-                let err = new Error('Cannot find item with id \"' + id2 + '\"');
+            if (!initiateItem) {
+                let err = new Error('Cannot find item with id \"' + initiateItem + '\"');
                 err.status = 404;
                 req.flash('error', err.message);
                 return res.redirect('back');
             }
-            if (!item1.owner.equals(user._id)) {
-                let err = new Error('You are not the owner of this item');
+            if (!initiator) {
+                let err = new Error('Cannot find user with id \"' + initiator + '\"');
                 err.status = 404;
                 req.flash('error', err.message);
                 return res.redirect('back');
-            }
-            else {
-                let ex = new exchange({
-                    initiator: user,
-                    responder: item2.author,
-                    initiateItem: item1._id,
-                    respondItem: item2._id,
-                    status: "pending"
-                });
-                ex.save()
-                    .then(result => {
-                        console.log(result);
-                        req.flash('success', 'Exchange request sent');
-                        res.redirect('/users/profile');
-                    }
-                    )
-                    .catch(err => next(err));
             }
 
+            let exchange = new Exchange({
+                initiator: initiator,
+                responder: respondItem.author._id,
+                initiateItem: initiateItem,
+                respondItem: respondItem,
+                status: 'pending'
+            });
 
-        }
-        )
-        .catch(err => next(err));
+            exchange.save()
+                .then(() => {
+                    req.flash('success', 'Trade request sent');
+                    res.redirect('/users/profile');
+                }
+                )
+                .catch(err => next(err));
+
+        }).catch(err => next(err));
 }

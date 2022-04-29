@@ -8,6 +8,7 @@ const flash = require('connect-flash');
 const tradeRoutes = require('./routes/tradeRoutes');
 const mainRoutes = require('./routes/mainRoutes');
 const userRoutes = require('./routes/userRoutes');
+const exchange = require('./controllers/exchangeController');
 
 const app = express();
 
@@ -56,6 +57,8 @@ app.use('/', mainRoutes);
 app.use('/users', userRoutes);
 
 app.use('/trades', tradeRoutes);
+
+app.get('/exchanges', exchange.index);
 
 app.use((req, res, next) => {
     let err = new Error('Seems like you lost your way!');

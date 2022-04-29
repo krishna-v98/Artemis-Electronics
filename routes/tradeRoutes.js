@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/tradeController');
+const exchangeController = require('../controllers/exchangeController');
 const { isAuthor, isLoggedIn, isNotAuthor } = require('../middlewares/auth');
 const { validateId, validateTrade, validateResult } = require('../middlewares/validator');
 
@@ -26,10 +27,7 @@ router.post('/:id/wishlist', validateId, isLoggedIn, isNotAuthor, controller.add
 //delete to remove item from wishlist
 router.delete('/:id/wishlist', validateId, isLoggedIn, isNotAuthor, controller.removeFromWishlist);
 
-// router.get('/:id/trades/:id/exchange/:id2', (req, res, next) => {
-//     let id = req.params.id;
-//     let id2 = req.params.id2;
-//     res.send(id + ' ' + id2);
-// });
+router.post('/:id1/exchange/:id2', exchangeController.exchange);
+
 
 module.exports = router;

@@ -27,7 +27,7 @@ exports.show = (req, res, next) => {
         .then(results => {
             const [item, items] = results;
             if (item) {
-                res.render('./trade/show', { item, items});
+                res.render('./trade/show', { item, items });
             } else {
                 let err = new Error('Cannot find item with id \"' + id + '\"');
                 err.status = 404;
@@ -186,4 +186,17 @@ exports.removeFromWishlist = (req, res, next) => {
         }
         )
         .catch(err => next(err));
+}
+
+exports.exchange = (req, res, next) => {
+    let id1 = req.params.id1;
+    let id2 = req.params.id2;
+    let user = req.session.user;
+    Promise.all([User.findById(user), model.findById(id1), model.findById(id2)])
+        .then(results => {
+            const [user, item1, item2] = results;
+            res.send('item1 = ' + item1.name + ' item2 = ' + item2.name + ' user = ' + user.firstName);
+        })
+        .catch(err => next(err));
+
 }
