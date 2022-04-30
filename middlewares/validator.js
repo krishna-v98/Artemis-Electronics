@@ -43,3 +43,25 @@ exports.validateTrade = [
     body('description', 'description is required').trim().escape().isLength({ min: 10, max: 255 }),
     body('category', 'category is required').notEmpty().trim().escape(),
 ];
+
+
+exports.dualValidateId = (req, res, next) => {
+    let id1 = req.params.id1;
+    let id2 = req.params.id2;
+
+    if (!id1.match(/^[0-9a-fA-F]{24}$/)) {
+        let err = new Error('Invalid ID');
+        err.status = 400;
+        next(err);
+    }
+    else if (!id2.match(/^[0-9a-fA-F]{24}$/)) {
+        let err = new Error('Invalid ID');
+        err.status = 400;
+        next(err);
+    }
+    else {
+        next();
+    }
+}
+
+

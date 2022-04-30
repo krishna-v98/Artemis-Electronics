@@ -40,7 +40,7 @@ exports.isAuthor = (req, res, next) => {
 };
 
 exports.isNotAuthor = (req, res, next) => {
-    let id = req.params.id;
+    let id = req.params.id1;
     Item.findById(id)
         .then(item => {
             if (item) {

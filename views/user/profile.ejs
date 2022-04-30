@@ -125,10 +125,15 @@
   <div class="requestsReceived">
     <h2>Your received Requests : </h2> <br>
     <% requestsReceived.forEach(request=>{ %>
-    Trade requested for : <%= request.initiateItem.name %> <br>
-    Item willing to trade : <%= request.respondItem.name %> <br>
+    Trade requested for : <%= request.respondItem.name %> <br>
+    Item willing to trade : <%= request.initiateItem.name %> <br>
     Request sent by : <%= request.initiator.firstName+' '+request.initiator.lastName %> <br>
     Status : <%= request.status %> <br> <br>
+    <div class="offer-buttons">
+      <form action="/trades/<%= request.respondItem._id %>/exchange/<%= request.initiateItem._id %>/accept" method="post">
+        <button type="submit" class="btn btn-primary">Accept</button>
+      </form>
+    </div>
     <% }) %>
   </div>
 

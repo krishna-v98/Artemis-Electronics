@@ -59,3 +59,64 @@ exports.exchange = (req, res, next) => {
 
         }).catch(err => next(err));
 }
+
+
+exports.acceptExchange = (req, res, next) => {
+    let respondItem = req.params.id1; //current user's item
+    let initiateItem = req.params.id2; //request user's item
+    let responder = req.session.user;
+
+    Promise.all([User.findById(responder), Item.findById(respondItem), Item.findById(initiateItem)])
+        .then(results => {
+            const [responder, respondItem, initiateItem] = results;
+            if (!respondItem) {
+                let err = new Error('Cannot find item with id \"' + respondItem + '\"');
+                err.status = 404;
+                req.flash('error', err.message);
+                return res.redirect('back');
+            }
+            if (!initiateItem) {
+                let err = new Error('Cannot find item with id \"' + initiateItem + '\"');
+                err.status = 404;
+                req.flash('error', err.message);
+                return res.redirect('back');
+            }
+            if (!responder) {
+                let err = new Error('Cannot find user with id \"' + responder + '\"');
+                err.status = 404;
+                req.flash('error', err.message);
+                return res.redirect('back');
+            }
+
+            console.log('everything is good');
+
+            Exchange.findOne({
+                initiator: initiateItem.author._id,
+                responder: responder._id,
+                initiateItem: initiateItem._id,
+                respondItem: respondItem._id,
+                status: 'pending'
+            }).then(exchange => {
+                if (!exchange) {
+                    let err = new Error('No exchange request found');
+                    err.status = 404;
+                    req.flash('error', err.message);
+                    return res.redirect('back');
+                } else {
+                    // responder object is available, initiator is available only through initiator Object's item author id
+
+                    let initiatedAuthor = initiateItem.author._id;
+                    initiateItem.author = responder._id;
+                    respondItem.author = initiatedAuthor;
+                    exchange.status = 'accepted';
+
+                    Promise.all([initiateItem.save(), respondItem.save(), exchange.save()])
+                        .then(() => {
+                            req.flash('success', 'Trade request accepted');
+                            res.redirect('back');
+                        }).catch(err => next(err));
+                }
+            }).catch(err => next(err));
+        })
+        .catch(err => next(err));
+}
