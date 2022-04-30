@@ -1,4 +1,4 @@
-const Item = require('../models/item');
+const Item = require('../models/trade');
 
 exports.isLoggedIn = (req, res, next) => {
     if (req.session.user) {

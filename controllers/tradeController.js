@@ -1,4 +1,4 @@
-const model = require('../models/item');
+const model = require('../models/trade');
 const User = require('../models/user');
 
 //show all

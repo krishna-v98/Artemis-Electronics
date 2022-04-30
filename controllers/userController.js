@@ -1,5 +1,5 @@
 const User = require('../models/user');
-const Item = require('../models/item');
+const Item = require('../models/trade');
 const Exchange = require('../models/exchange');
 
 exports.login = (req, res, next) => {
@@ -15,10 +15,18 @@ exports.profile = (req, res, next) => {
     Promise.all([
         User.findById(id).populate('wishlist'),
         Item.find({ author: id }).sort({ createdAt: -1 }),
+        Exchange.find({ initiator: id })
+            .populate('initiateItem', 'name')
+            .populate('respondItem', 'name')
+            .populate('responder', 'firstName, lastName'),
+        Exchange.find({ responder: id })
+            .populate('initiateItem', 'name')
+            .populate('respondItem', 'name')
+            .populate('initiator', 'firstName, lastName')
     ])
         .then(results => {
-            const [user, items] = results;
-            res.render('./user/profile', { user, items });
+            const [user, items, requestsSent, requestsReceived] = results;
+            res.render('./user/profile', { user, items, requestsSent, requestsReceived });
         })
         .catch(err => next(err));
 };

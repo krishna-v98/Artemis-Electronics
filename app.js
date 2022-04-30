@@ -58,8 +58,6 @@ app.use('/users', userRoutes);
 
 app.use('/trades', tradeRoutes);
 
-app.get('/exchanges', exchange.index);
-
 app.use((req, res, next) => {
     let err = new Error('Seems like you lost your way!');
     err.status = 404;

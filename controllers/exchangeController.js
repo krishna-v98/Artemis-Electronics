@@ -1,20 +1,6 @@
-const Item = require('../models/item');
+const Item = require('../models/trade');
 const User = require('../models/user');
 const Exchange = require('../models/exchange');
-
-exports.index = (req, res, next) => {
-    let id = req.session.user;
-    // Exchange.find({ initiator: id })
-    //     .populate('initiator', 'firstName lastName')
-    //     .populate('responder', 'firstName lastName')
-    //     .populate('initiateItem', 'name')
-    //     .populate('respondItem', 'name')
-    //     .then(exchanges => {
-    //         res.render('./trade/exchanges', { exchanges });
-    //     })
-    //     .catch(err => next(err));
-    res.send('Not implemented');
-}
 
 exports.exchange = (req, res, next) => {
     let respondItem = req.params.id1;

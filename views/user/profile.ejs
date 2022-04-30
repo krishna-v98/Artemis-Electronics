@@ -107,6 +107,15 @@
       </div>
     </div>
   </div>
+
+  <div class="userRequests">
+    <% requestsSent.forEach(request=>{ %>
+      Trade requested for : <%= request.respondItem.name %> <br>
+      Item willing to trade : <%= request.initiateItem.name %> <br>
+      Owner of item : <%= request.responder.firstName+' '+request.responder.lastName %> <br> 
+      Status : <%= request.status %> <br> <br>
+    <% }) %> 
+  </div>
   
 
 
