@@ -29,21 +29,33 @@ exports.exchange = (req, res, next) => {
                 return res.redirect('back');
             }
 
-            let exchange = new Exchange({
-                initiator: initiator,
+            Exchange.findOne({
+                initiator: initiator._id,
                 responder: respondItem.author._id,
-                initiateItem: initiateItem,
-                respondItem: respondItem,
-                status: 'pending'
-            });
+                initiateItem: initiateItem._id,
+                respondItem: respondItem._id
+            }).then(exchange => {
+                if (exchange) {
+                    req.flash('error', 'You have already sent an exchange request for this item');
+                    return res.redirect('back');
+                } else {
+                    let exchange = new Exchange({
+                        initiator: initiator,
+                        responder: respondItem.author._id,
+                        initiateItem: initiateItem,
+                        respondItem: respondItem,
+                        status: 'pending'
+                    });
 
-            exchange.save()
-                .then(() => {
-                    req.flash('success', 'Trade request sent');
-                    res.redirect('/users/profile');
+                    exchange.save()
+                        .then(() => {
+                            req.flash('success', 'Trade request sent');
+                            res.redirect('/users/profile');
+                        }
+                        )
+                        .catch(err => next(err));
                 }
-                )
-                .catch(err => next(err));
+            }).catch(err => next(err));
 
         }).catch(err => next(err));
 }

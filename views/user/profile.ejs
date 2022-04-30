@@ -108,18 +108,35 @@
     </div>
   </div>
 
-  <div class="userRequests">
+  <br>
+  <br>
+  <div class="requestsSent">
+    <h2>Your sent Requests : </h2> <br>
     <% requestsSent.forEach(request=>{ %>
-      Trade requested for : <%= request.respondItem.name %> <br>
-      Item willing to trade : <%= request.initiateItem.name %> <br>
-      Owner of item : <%= request.responder.firstName+' '+request.responder.lastName %> <br> 
-      Status : <%= request.status %> <br> <br>
-    <% }) %> 
+    Trade requested for : <%= request.respondItem.name %> <br>
+    Item willing to trade : <%= request.initiateItem.name %> <br>
+    Owner of item : <%= request.responder.firstName+' '+request.responder.lastName %> <br>
+    Status : <%= request.status %> <br> <br>
+    <% }) %>
   </div>
-  
+
+  <br> <br> <br>
+
+  <div class="requestsReceived">
+    <h2>Your received Requests : </h2> <br>
+    <% requestsReceived.forEach(request=>{ %>
+    Trade requested for : <%= request.initiateItem.name %> <br>
+    Item willing to trade : <%= request.respondItem.name %> <br>
+    Request sent by : <%= request.initiator.firstName+' '+request.initiator.lastName %> <br>
+    Status : <%= request.status %> <br> <br>
+    <% }) %>
+  </div>
 
 
+  <br>
+  <br>
   <div class="wishlist">
+    <h2>Your wishlist : </h2> <br>
     <% user.wishlist.forEach(item => {%>
     <a href="/trades/<%=item.id%>">
       <%=item.name%>
