@@ -116,7 +116,7 @@ a:hover {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        svg{
+        svg {
           color: rgb(59, 59, 59);
         }
         span {
@@ -180,4 +180,266 @@ a:hover {
 
 .modal {
   color: black;
+}
+
+.requestsSent,
+.requestsReceived,
+.wishlist {
+  width: 80%;
+  margin: 5rem auto 0 auto;
+
+  &-heading {
+    font-family: "Roboto serif", sans-serif;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto 3rem auto;
+    font-size: 2rem;
+    font-weight: 100;
+  }
+}
+
+.requestsSent {
+  &-heading {
+    grid-column: span 3;
+  }
+
+  &-list {
+    padding: 0 3rem;
+    display: grid;
+    grid-gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  &-item {
+    border: 1px solid rgb(210, 210, 210);
+    padding: 1rem;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 35% 65%;
+
+    &-img {
+      img {
+        width: 5rem;
+        height: 5rem;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid white;
+      }
+      img:last-child {
+        margin-left: -2rem;
+      }
+      display: flex;
+      grid-row: span 5;
+    }
+
+    &-name {
+      display: grid;
+      grid-template-columns: 22% 77%;
+      font-size: 1.2rem;
+      font-weight: 100;
+      p {
+        display: inline-block;
+        margin-bottom: 0;
+      }
+      span {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+
+    &-price {
+      display: grid;
+      grid-template-columns: 30% 70%;
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      font-weight: 100;
+      color: grey;
+    }
+
+    &-owner {
+      margin-top: 0.5rem;
+      display: grid;
+      grid-template-columns: 30% 70%;
+      font-size: 1rem;
+      font-weight: 100;
+      color: grey;
+      span:last-child {
+        color: black;
+        font-weight: light;
+      }
+    }
+
+    &-status {
+      display: flex;
+      align-items: center;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: grey;
+      svg {
+        margin-right: 0.5rem;
+      }
+    }
+    &-action {
+      button {
+        display: flex;
+        align-items: center;
+        svg {
+          margin-right: 0.5rem;
+        }
+      }
+      margin-top: 1rem;
+    }
+  }
+}
+
+.requestsReceived {
+  &-heading {
+    grid-column: span 3;
+  }
+
+  &-list {
+    padding: 0 3rem;
+    display: grid;
+    grid-gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  &-item {
+    border: 1px solid rgb(210, 210, 210);
+    padding: 1rem;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 35% 65%;
+
+    &-img {
+      img {
+        width: 5rem;
+        height: 5rem;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid white;
+      }
+      img:last-child {
+        margin-left: -2rem;
+      }
+      display: flex;
+      grid-row: span 5;
+    }
+
+    &-name {
+      display: grid;
+      grid-template-columns: 22% 77%;
+      font-size: 1.2rem;
+      font-weight: 100;
+      p {
+        display: inline-block;
+        margin-bottom: 0;
+      }
+      span {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+
+    &-price {
+      display: grid;
+      grid-template-columns: 30% 70%;
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      font-weight: 100;
+      color: grey;
+    }
+
+    &-owner {
+      margin-top: 0.5rem;
+      display: grid;
+      grid-template-columns: 30% 70%;
+      font-size: 1rem;
+      font-weight: 100;
+      color: grey;
+      span:last-child {
+        color: black;
+        font-weight: light;
+      }
+    }
+
+    &-status {
+      display: flex;
+      align-items: center;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: grey;
+      svg {
+        margin-right: 0.5rem;
+      }
+    }
+    &-action {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column-gap: 1rem;
+    }
+  }
+}
+
+.wishlist {
+  &-heading {
+    grid-column: span 2;
+  }
+  width: 50%;
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  &-item {
+    p {
+      margin-bottom: 0;
+    }
+    form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    button {
+      cursor: pointer;
+      background-color: transparent;
+      border: transparent;
+      svg {
+        color: darkgrey;
+      }
+    }
+    padding: 1rem;
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 10% 30% 60%;
+    &-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 5rem;
+        height: 5rem;
+        object-fit: contain;
+        border-radius: 50%;
+      }
+    }
+    &-name {
+      font-size: 1.2rem;
+      font-weight: 100;
+      p {
+        display: inline-block;
+        margin-bottom: 0;
+      }
+    }
+    &-price {
+      font-size: 1rem;
+      font-weight: 100;
+      color: grey;
+    }
+    &-created {
+      font-size: 0.8rem;
+      font-weight: 100;
+      color: grey;
+    }
+  }
 }

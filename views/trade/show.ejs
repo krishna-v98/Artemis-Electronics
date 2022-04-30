@@ -144,7 +144,9 @@
           <div class="tradeList__items">
             <% items.forEach(x => { %>
             <form action="/trades/<%= item.id %>/exchange/<%= x.id %>" method="post">
+              <img src="<%=x.imageLink%>" alt="">
               <input type="submit" value="<%= x.name %> ">
+              <p>, <%= x.createdAt.toLocaleString() %> </p>
             </form>
             <% }) %>
           </div>

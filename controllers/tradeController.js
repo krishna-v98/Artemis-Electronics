@@ -137,6 +137,11 @@ exports.addTowishlist = (req, res, next) => {
                 return res.redirect('back');
             }
 
+            if(user._id == item.author._id){
+                req.flash('error', 'You cannot add your own item to your wishlist');
+                return res.redirect('back');
+            }
+
             if (!user.wishlist.includes(item._id)) {
                 user.wishlist.push(item);
                 user.save()

@@ -222,4 +222,351 @@ a:hover {
 .modal {
   color: black;
 }
+
+.requestsSent,
+.requestsReceived,
+.wishlist {
+  width: 80%;
+  margin: 5rem auto 0 auto;
+}
+
+.requestsSent-heading,
+.requestsReceived-heading,
+.wishlist-heading {
+  font-family: "Roboto serif", sans-serif;
+  text-align: center;
+  width: 80%;
+  margin: 0 auto 3rem auto;
+  font-size: 2rem;
+  font-weight: 100;
+}
+
+.requestsSent-heading {
+  grid-column: span 3;
+}
+
+.requestsSent-list {
+  padding: 0 3rem;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 1.5rem;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+}
+
+.requestsSent-item {
+  border: 1px solid #d2d2d2;
+  padding: 1rem;
+  border-radius: 10px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 35% 65%;
+      grid-template-columns: 35% 65%;
+}
+
+.requestsSent-item-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-row: span 5;
+}
+
+.requestsSent-item-img img {
+  width: 5rem;
+  height: 5rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid white;
+}
+
+.requestsSent-item-img img:last-child {
+  margin-left: -2rem;
+}
+
+.requestsSent-item-name {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 22% 77%;
+      grid-template-columns: 22% 77%;
+  font-size: 1.2rem;
+  font-weight: 100;
+}
+
+.requestsSent-item-name p {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.requestsSent-item-name span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.requestsSent-item-price {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 30% 70%;
+      grid-template-columns: 30% 70%;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 100;
+  color: grey;
+}
+
+.requestsSent-item-owner {
+  margin-top: 0.5rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 30% 70%;
+      grid-template-columns: 30% 70%;
+  font-size: 1rem;
+  font-weight: 100;
+  color: grey;
+}
+
+.requestsSent-item-owner span:last-child {
+  color: black;
+  font-weight: light;
+}
+
+.requestsSent-item-status {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: grey;
+}
+
+.requestsSent-item-status svg {
+  margin-right: 0.5rem;
+}
+
+.requestsSent-item-action {
+  margin-top: 1rem;
+}
+
+.requestsSent-item-action button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.requestsSent-item-action button svg {
+  margin-right: 0.5rem;
+}
+
+.requestsReceived-heading {
+  grid-column: span 3;
+}
+
+.requestsReceived-list {
+  padding: 0 3rem;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 1.5rem;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+}
+
+.requestsReceived-item {
+  border: 1px solid #d2d2d2;
+  padding: 1rem;
+  border-radius: 10px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 35% 65%;
+      grid-template-columns: 35% 65%;
+}
+
+.requestsReceived-item-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  grid-row: span 5;
+}
+
+.requestsReceived-item-img img {
+  width: 5rem;
+  height: 5rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid white;
+}
+
+.requestsReceived-item-img img:last-child {
+  margin-left: -2rem;
+}
+
+.requestsReceived-item-name {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 22% 77%;
+      grid-template-columns: 22% 77%;
+  font-size: 1.2rem;
+  font-weight: 100;
+}
+
+.requestsReceived-item-name p {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.requestsReceived-item-name span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.requestsReceived-item-price {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 30% 70%;
+      grid-template-columns: 30% 70%;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 100;
+  color: grey;
+}
+
+.requestsReceived-item-owner {
+  margin-top: 0.5rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 30% 70%;
+      grid-template-columns: 30% 70%;
+  font-size: 1rem;
+  font-weight: 100;
+  color: grey;
+}
+
+.requestsReceived-item-owner span:last-child {
+  color: black;
+  font-weight: light;
+}
+
+.requestsReceived-item-status {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: grey;
+}
+
+.requestsReceived-item-status svg {
+  margin-right: 0.5rem;
+}
+
+.requestsReceived-item-action {
+  margin-top: 1rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 1rem;
+}
+
+.wishlist {
+  width: 50%;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 1.5rem;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+}
+
+.wishlist-heading {
+  grid-column: span 2;
+}
+
+.wishlist-item {
+  padding: 1rem;
+  border: 1px solid #d2d2d2;
+  border-radius: 10px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 10% 30% 60%;
+      grid-template-columns: 10% 30% 60%;
+}
+
+.wishlist-item p {
+  margin-bottom: 0;
+}
+
+.wishlist-item form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wishlist-item button {
+  cursor: pointer;
+  background-color: transparent;
+  border: transparent;
+}
+
+.wishlist-item button svg {
+  color: darkgrey;
+}
+
+.wishlist-item-image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wishlist-item-image img {
+  width: 5rem;
+  height: 5rem;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 50%;
+}
+
+.wishlist-item-name {
+  font-size: 1.2rem;
+  font-weight: 100;
+}
+
+.wishlist-item-name p {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.wishlist-item-price {
+  font-size: 1rem;
+  font-weight: 100;
+  color: grey;
+}
+
+.wishlist-item-created {
+  font-size: 0.8rem;
+  font-weight: 100;
+  color: grey;
+}
 /*# sourceMappingURL=profile.css.map */

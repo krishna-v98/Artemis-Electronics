@@ -29,6 +29,13 @@ exports.exchange = (req, res, next) => {
                 return res.redirect('back');
             }
 
+            if (initiateItem.author._id == initiator._id) {
+                let err = new Error('You cannot trade your own item');
+                err.status = 404;
+                req.flash('error', err.message);
+                return res.redirect('back');
+            }
+
             Exchange.findOne({
                 initiator: initiator._id,
                 responder: respondItem.author._id,
@@ -88,7 +95,12 @@ exports.acceptExchange = (req, res, next) => {
                 return res.redirect('back');
             }
 
-            console.log('everything is good');
+            if (respondItem.author._id == responder._id) {
+                let err = new Error('You cannot trade your own item');
+                err.status = 404;
+                req.flash('error', err.message);
+                return res.redirect('back');
+            }
 
             Exchange.findOne({
                 initiator: initiateItem.author._id,
@@ -120,3 +132,128 @@ exports.acceptExchange = (req, res, next) => {
         })
         .catch(err => next(err));
 }
+
+exports.rejectExchange = (req, res, next) => {
+    let respondItem = req.params.id1; //current user's item
+    let initiateItem = req.params.id2; //request user's item
+    let responder = req.session.user;
+
+    Promise.all([User.findById(responder), Item.findById(respondItem), Item.findById(initiateItem)])
+        .then(results => {
+            const [responder, respondItem, initiateItem] = results;
+            if (!respondItem) {
+                let err = new Error('Cannot find item with id \"' + respondItem + '\"');
+                err.status = 404;
+                req.flash('error', err.message);
+                return res.redirect('back');
+            }
+            if (!initiateItem) {
+                let err = new Error('Cannot find item with id \"' + initiateItem + '\"');
+                err.status = 404;
+                req.flash('error', err.message);
+                return res.redirect('back');
+            }
+            if (!responder) {
+
+                let err = new Error('Cannot find user with id \"' + responder + '\"');
+                err.status = 404;
+                req.flash('error', err.message);
+                return res.redirect('back');
+            }
+
+            if (respondItem.author._id == responder._id) {
+                let err = new Error('You cannot trade your own item');
+                err.status = 404;
+                req.flash('error', err.message);
+                return res.redirect('back');
+            }
+
+            Exchange.findOne({
+                initiator: initiateItem.author._id,
+                responder: responder._id,
+                initiateItem: initiateItem._id,
+                respondItem: respondItem._id,
+                status: 'pending'
+            }).then(exchange => {
+                if (!exchange) {
+                    let err = new Error('No exchange request found');
+                    err.status = 404;
+                    req.flash('error', err.message);
+                    return res.redirect('back');
+                } else {
+                    exchange.status = 'rejected';
+                    exchange.save()
+                        .then(() => {
+                            req.flash('success', 'Trade request rejected');
+                            res.redirect('back');
+                        }
+                        )
+                        .catch(err => next(err));
+                }
+            }).catch(err => next(err));
+        })
+        .catch(err => next(err));
+}
+
+exports.cancelExchange = (req, res, next) => {
+    let respondItem = req.params.id1; //request user's item
+    let initiateItem = req.params.id2; //current user's item
+    let initiator = req.session.user;
+
+    Promise.all([User.findById(initiator), Item.findById(respondItem), Item.findById(initiateItem)])
+        .then(results => {
+            const [initiator, respondItem, initiateItem] = results;
+            if (!respondItem) {
+                let err = new Error('Cannot find item with id \"' + respondItem + '\"');
+                err.status = 404;
+                req.flash('error', err.message);
+                return res.redirect('back');
+            }
+            if (!initiateItem) {
+                let err = new Error('Cannot find item with id \"' + initiateItem + '\"');
+                err.status = 404;
+                req.flash('error', err.message);
+                return res.redirect('back');
+            }
+            if (!initiator) {
+                let err = new Error('Cannot find user with id \"' + initiator + '\"');
+                err.status = 404;
+                req.flash('error', err.message);
+                return res.redirect('back');
+            }
+
+            if (respondItem.author._id == initiator._id) {
+                let err = new Error('You cannot trade your own item');
+                err.status = 404;
+                req.flash('error', err.message);
+                return res.redirect('back');
+            }
+
+            Exchange.findOne({
+                initiator: initiator._id,
+                responder: respondItem.author._id,
+                initiateItem: initiateItem._id,
+                respondItem: respondItem._id,
+                status: 'pending'
+            }).then(exchange => {
+                if (!exchange) {
+                    let err = new Error('No exchange request found');
+                    err.status = 404;
+                    req.flash('error', err.message);
+                    return res.redirect('back');
+                } else {
+                    //remove exchange
+                    exchange.remove()
+                        .then(() => {
+                            req.flash('success', 'Trade request cancelled');
+                            res.redirect('back');
+                        }
+                        )
+                        .catch(err => next(err));
+                }
+            }).catch(err => next(err));
+        })
+        .catch(err => next(err));
+}
+
+

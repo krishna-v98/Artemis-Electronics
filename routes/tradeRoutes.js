@@ -28,9 +28,13 @@ router.post('/:id/wishlist', validateId, isLoggedIn, controller.addTowishlist);
 router.delete('/:id/wishlist', validateId, isLoggedIn, controller.removeFromWishlist);
 
 //post to send exchange request
-router.post('/:id1/exchange/:id2', dualValidateId, isLoggedIn, isNotAuthor, exchangeController.exchange);
+router.post('/:id1/exchange/:id2', dualValidateId, isLoggedIn, exchangeController.exchange);
 
 router.post('/:id1/exchange/:id2/accept', dualValidateId, isLoggedIn, exchangeController.acceptExchange);
+
+router.post('/:id1/exchange/:id2/reject', dualValidateId, isLoggedIn, exchangeController.rejectExchange);
+
+router.post('/:id1/exchange/:id2/cancel', dualValidateId, isLoggedIn, exchangeController.cancelExchange);
 
 
 module.exports = router;

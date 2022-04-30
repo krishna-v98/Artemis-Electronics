@@ -16,12 +16,12 @@ exports.profile = (req, res, next) => {
         User.findById(id).populate('wishlist'),
         Item.find({ author: id }).sort({ createdAt: -1 }),
         Exchange.find({ initiator: id })
-            .populate('initiateItem', 'name')
-            .populate('respondItem', 'name')
+            .populate('initiateItem', 'name imageLink price')
+            .populate('respondItem', 'name imageLink price')
             .populate('responder', 'firstName lastName'),
         Exchange.find({ responder: id })
-            .populate('initiateItem', 'name')
-            .populate('respondItem', 'name')
+            .populate('initiateItem', 'name imageLink price')
+            .populate('respondItem', 'name imageLink price')
             .populate('initiator', 'firstName lastName')
     ])
         .then(results => {
