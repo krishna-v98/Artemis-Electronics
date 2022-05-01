@@ -1,6 +1,7 @@
 const model = require('../models/trade');
 const User = require('../models/user');
 const Exchange = require('../models/exchange');
+const { promiseImpl } = require('ejs');
 
 //show all
 exports.index = (req, res, next) => {
@@ -198,4 +199,26 @@ exports.removeFromWishlist = (req, res, next) => {
         }
         )
         .catch(err => next(err));
+}
+
+exports.exchangesList = (req, res, next) => {
+    let user = req.session.user;
+    Promise.all([
+        Exchange.find({ initiator: user })
+            .populate('initiator', 'firstName lastName')
+            .populate('responder', 'firstName lastName')
+            .populate('initiateItem')
+            .populate('respondItem')
+            .sort({ createdAt: -1 }),
+        Exchange.find({ responder: user })
+            .populate('initiator', 'firstName lastName')
+            .populate('responder', 'firstName lastName')
+            .populate('initiateItem')
+            .populate('respondItem')
+            .sort({ createdAt: -1 })
+    ]).then(results => {
+        const [initiator, responder] = results;
+        res.render('./trade/exchanges', { initiator, responder });
+    }
+    ).catch(err => next(err));
 }

@@ -5,21 +5,127 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%- include('../partials/fonts.ejs') %>
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/history.css">
   <title>Document</title>
 </head>
 
 <body>
-  <% exchanges.forEach(exchange =>{ %>
-  <%= exchange.id %>
-  Initiator: <%= exchange.initiator.firstName+' '+exchange.initiator.lastName %> <br>
+  <%- include('../partials/header.ejs') %>
+  <% if(initiator.length > 0){ %>
+  <div class="sentRequests">
+    <h1>Your sent requests</h1>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Items</th>
+          <th>Initiator</th>
+          <th>Responder</th>
+          <th>Status</th>
+          <th>Open</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(var i = 0; i < initiator.length; i++){ %>
+        <tr>
+          <td>
+            <img src="<%=initiator[i].initiateItem.imageLink%>" alt="">
+            <img src="<%=initiator[i].respondItem.imageLink%>" alt="">
+          </td>
+          <td><%=initiator[i].initiateItem.name%> <br>
+            <%=initiator[i].respondItem.name%>
+          </td>
+          <td><%= initiator[i].initiator.firstName+' '+initiator[i].initiator.lastName%></td>
+          <td><%= initiator[i].responder.firstName+' '+initiator[i].responder.lastName%></td>
+          <td><%= initiator[i].status%></td>
+          <td>
+            <table>
+              <tr>
+                <td>
+                  Your Item:
+                </td>
+                <td>
+                  <a href="/trades/<%= initiator[i].initiateItem.id%>"><%=initiator[i].initiateItem.name%></a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Asked Item :
+                </td>
+                <td>
+                  <a href="/trades/<%= initiator[i].respondItem.id%>"><%=initiator[i].respondItem.name%></a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+  <% } else {%>
+  <p>No sent requests</p>
+  <% } %>
 
-  responder: <%= exchange.responder.firstName+' '+exchange.responder.lastName  %> <br>
+  <% if(responder.length > 0){ %>
+  <div class="receivedRequests">
+    <h1>Your received requests</h1>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Items</th>
+          <th>Initiator</th>
+          <th>Responder</th>
+          <th>Status</th>
+          <th>Open</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(var i = 0; i < responder.length; i++){ %>
+        <tr>
+          <td>
+            <img src="<%=responder[i].initiateItem.imageLink%>" alt="">
+            <img src="<%=responder[i].respondItem.imageLink%>" alt="">
+          </td>
+          <td><%=responder[i].initiateItem.name%> <br>
+            <%=responder[i].respondItem.name%>
+          </td>
+          <td><%= responder[i].initiator.firstName+' '+responder[i].initiator.lastName%></td>
+          <td><%= responder[i].responder.firstName+' '+responder[i].responder.lastName%></td>
+          <td><%= responder[i].status%></td>
+          <td>
+            <table>
+              <tr>
+                <td>
+                  Your Item:
+                </td>
+                <td>
+                  <a href="/trades/<%= responder[i].initiateItem.id%>"><%=responder[i].initiateItem.name%></a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Asked Item :
+                </td>
+                <td>
+                  <a href="/trades/<%= responder[i].respondItem.id%>"><%=responder[i].respondItem.name%></a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+  <% } else {%>
+  <p>No received requests</p>
+  <% } %>
 
-  item requested : <%=exchange.respondItem.name%> <br>
-  item offered : <%=exchange.initiateItem.name%> <br>
-  <%= exchange.status %>
-
-  <% }) %>
+  <%- include('../partials/footer.ejs')  %>
 </body>
 
 </html>

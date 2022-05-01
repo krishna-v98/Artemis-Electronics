@@ -245,6 +245,10 @@ a:hover {
   grid-column: span 3;
 }
 
+.requestsSent-empty p {
+  text-align: center;
+}
+
 .requestsSent-list {
   padding: 0 3rem;
   display: -ms-grid;
@@ -366,6 +370,10 @@ a:hover {
 
 .requestsReceived-heading {
   grid-column: span 3;
+}
+
+.requestsReceived-empty p {
+  text-align: center;
 }
 
 .requestsReceived-list {

@@ -1,0 +1,79 @@
+.sentRequests h1,
+.receivedRequests h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-family: "Roboto serif", sans-serif;
+  font-weight: 100;
+  margin-top: 3rem;
+}
+
+.sentRequests table,
+.receivedRequests table {
+  width: 70%;
+  margin: 3rem auto;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.sentRequests table th,
+.receivedRequests table th {
+  border-bottom: 1px solid #ccc;
+  font-family: "Roboto serif", sans-serif;
+  font-weight: bold;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.sentRequests table tr,
+.receivedRequests table tr {
+  border-bottom: 1px solid #ccc;
+}
+
+.sentRequests table td,
+.receivedRequests table td {
+  text-align: center;
+  font-family: "Roboto serif", sans-serif;
+  padding: 1rem;
+}
+
+.sentRequests table td img,
+.receivedRequests table td img {
+  border: 5px solid white;
+  width: 6rem;
+  height: 6rem;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 50%;
+  margin-left: -3rem;
+}
+
+.sentRequests table tr td:last-child table,
+.receivedRequests table tr td:last-child table {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  border: 0;
+}
+
+.sentRequests table tr td:last-child table td,
+.receivedRequests table tr td:last-child table td {
+  padding: 0;
+}
+
+.sentRequests table tr td:last-child table td:first-child,
+.receivedRequests table tr td:last-child table td:first-child {
+  text-align: right;
+}
+
+.sentRequests table tr td:last-child table td:last-child,
+.receivedRequests table tr td:last-child table td:last-child {
+  text-align: left;
+  padding-left: 1rem;
+}
+
+.sentRequests table tr:last-child td,
+.receivedRequests table tr:last-child td {
+  border-bottom: transparent;
+}
+/*# sourceMappingURL=history.css.map */

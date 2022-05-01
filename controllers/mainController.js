@@ -5,3 +5,4 @@ exports.about = (req, res, next) => {
 exports.contact = (req, res, next) => {
     res.render('contact');
 }
+

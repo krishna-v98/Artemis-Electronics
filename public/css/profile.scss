@@ -203,6 +203,12 @@ a:hover {
     grid-column: span 3;
   }
 
+  &-empty{
+    p{
+      text-align: center;
+    }
+  }
+
   &-list {
     padding: 0 3rem;
     display: grid;
@@ -295,6 +301,11 @@ a:hover {
 .requestsReceived {
   &-heading {
     grid-column: span 3;
+  }
+  &-empty{
+    p{
+      text-align: center;
+    }
   }
 
   &-list {

@@ -37,4 +37,5 @@ router.post('/:id1/exchange/:id2/reject', dualValidateId, isLoggedIn, exchangeCo
 router.post('/:id1/exchange/:id2/cancel', dualValidateId, isLoggedIn, exchangeController.cancelExchange);
 
 
+
 module.exports = router;
