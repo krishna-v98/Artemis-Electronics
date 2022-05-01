@@ -18,11 +18,11 @@ exports.profile = (req, res, next) => {
         Exchange.find({ initiator: id })
             .populate('initiateItem', 'name imageLink price')
             .populate('respondItem', 'name imageLink price')
-            .populate('responder', 'firstName lastName'),
+            .populate('responder', 'firstName lastName').sort({ createdAt: -1 }),
         Exchange.find({ responder: id })
             .populate('initiateItem', 'name imageLink price')
             .populate('respondItem', 'name imageLink price')
-            .populate('initiator', 'firstName lastName')
+            .populate('initiator', 'firstName lastName').sort({ createdAt: -1 })
     ])
         .then(results => {
             const [user, items, requestsSent, requestsReceived] = results;

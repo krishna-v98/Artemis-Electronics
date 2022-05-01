@@ -1,5 +1,6 @@
 const model = require('../models/trade');
 const User = require('../models/user');
+const Exchange = require('../models/exchange');
 
 //show all
 exports.index = (req, res, next) => {
@@ -23,17 +24,24 @@ exports.show = (req, res, next) => {
     let id = req.params.id;
     let user = req.session.user;
     //promise all to get item and user ownned items
-    Promise.all([model.findById(id).populate('author', 'firstName lastName'), model.find({ author: user }).sort({ createdAt: -1 })])
-        .then(results => {
-            const [item, items] = results;
-            if (item) {
-                res.render('./trade/show', { item, items });
-            } else {
-                let err = new Error('Cannot find item with id \"' + id + '\"');
-                err.status = 404;
-                throw err;
-            }
-        })
+    Promise.all([
+        model.findById(id).populate('author', 'firstName lastName'),
+        model.find({ author: user }).sort({ createdAt: -1 }),
+        Exchange.find({ respondItem: id, status: 'pending' })
+            .populate('initiateItem', 'name price imageLink')
+            .populate('initiator', 'firstName lastName')
+            .populate('createdAt')
+    ]).then(results => {
+        const [item, items, requests] = results;
+        if (item) {
+            console.log(requests);
+            res.render('./trade/show', { item, items, requests });
+        } else {
+            let err = new Error('Cannot find item with id \"' + id + '\"');
+            err.status = 404;
+            throw err;
+        }
+    })
         .catch(err => {
             next(err);
         });
@@ -137,7 +145,7 @@ exports.addTowishlist = (req, res, next) => {
                 return res.redirect('back');
             }
 
-            if(user._id == item.author._id){
+            if (user._id == item.author._id) {
                 req.flash('error', 'You cannot add your own item to your wishlist');
                 return res.redirect('back');
             }

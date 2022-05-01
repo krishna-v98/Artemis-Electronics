@@ -40,7 +40,8 @@ exports.exchange = (req, res, next) => {
                 initiator: initiator._id,
                 responder: respondItem.author._id,
                 initiateItem: initiateItem._id,
-                respondItem: respondItem._id
+                respondItem: respondItem._id,
+                status: 'pending'
             }).then(exchange => {
                 if (exchange) {
                     req.flash('error', 'You have already sent an exchange request for this item');
@@ -121,6 +122,8 @@ exports.acceptExchange = (req, res, next) => {
                     initiateItem.author = responder._id;
                     respondItem.author = initiatedAuthor;
                     exchange.status = 'accepted';
+                    initiateItem.status = 'sold';
+                    respondItem.status = 'sold';
 
                     Promise.all([initiateItem.save(), respondItem.save(), exchange.save()])
                         .then(() => {
