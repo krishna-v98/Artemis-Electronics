@@ -15,11 +15,11 @@ exports.profile = (req, res, next) => {
     Promise.all([
         User.findById(id).populate('wishlist'),
         Item.find({ author: id }).sort({ createdAt: -1 }),
-        Exchange.find({ initiator: id, status:'pending' })
+        Exchange.find({ initiator: id })
             .populate('initiateItem', 'name imageLink price')
             .populate('respondItem', 'name imageLink price')
             .populate('responder', 'firstName lastName').sort({ createdAt: -1 }),
-        Exchange.find({ responder: id, status: 'pending' })
+        Exchange.find({ responder: id })
             .populate('initiateItem', 'name imageLink price')
             .populate('respondItem', 'name imageLink price')
             .populate('initiator', 'firstName lastName').sort({ createdAt: -1 })

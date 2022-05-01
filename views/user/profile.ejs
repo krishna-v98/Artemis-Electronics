@@ -156,6 +156,7 @@
     <div class="requestsSent-list">
       <h2 class="requestsSent-heading">Your sent Requests : </h2>
       <% requestsSent.forEach(request=>{ %>
+        <% if(request.status == 'pending') {%> 
       <div class="requestsSent-item">
         <div class="requestsSent-item-img">
           <img src="<%= request.respondItem.imageLink %> " alt="">
@@ -210,7 +211,7 @@
           <% } %>
         </div>
       </div>
-      <% })} %>
+      <% }})} %>
     </div>
   </div>
 
@@ -226,6 +227,7 @@
     <div class="requestsReceived-list">
       <h2 class="requestsReceived-heading">Your Received Requests : </h2>
       <% requestsReceived.forEach(request=>{ %>
+        <% if(request.status == 'pending') {%> 
       <div class="requestsReceived-item">
         <div class="requestsReceived-item-img">
           <img src="<%= request.respondItem.imageLink %> " alt="">
@@ -290,7 +292,7 @@
         </div>
         <% } %>
       </div>
-      <% })} %>
+      <% }})} %>
     </div>
   </div>
 
