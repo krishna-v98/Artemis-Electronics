@@ -109,14 +109,15 @@
   </div>
 
   <div class="wishlist">
-    <h2 class="wishlist-heading">Your wishlist : </h2>
 
     <% if(user.wishlist.length == 0) { %>
     <div class="wishlist-empty">
       <h2 class="wishlist-heading">No items in your wishlist!</h2>
-      <p>Start trading now!</p>
+      <p>Start adding now!</p>
     </div>
     <% } else { %>
+    <h2 class="wishlist-heading">Your wishlist : </h2>
+
     <% user.wishlist.forEach(item => {%>
     <div class="wishlist-item">
       <form method="post" action="/trades/<%=item.id%>/wishlist?_method=DELETE ">

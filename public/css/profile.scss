@@ -383,6 +383,16 @@ a:hover {
 }
 
 .wishlist {
+  &-empty{
+    display: flex;
+    grid-column: span 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h2{
+      font-size: 1.5rem;
+    }
+  }
   &-heading {
     grid-column: span 2;
   }

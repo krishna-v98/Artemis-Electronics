@@ -28,13 +28,12 @@ exports.show = (req, res, next) => {
         model.findById(id).populate('author', 'firstName lastName'),
         model.find({ author: user }).sort({ createdAt: -1 }),
         Exchange.find({ respondItem: id, status: 'pending' })
-            .populate('initiateItem', 'name price imageLink')
+            .populate('initiateItem', 'name price imageLink createdAt')
             .populate('initiator', 'firstName lastName')
             .populate('createdAt')
     ]).then(results => {
         const [item, items, requests] = results;
         if (item) {
-            console.log(requests);
             res.render('./trade/show', { item, items, requests });
         } else {
             let err = new Error('Cannot find item with id \"' + id + '\"');

@@ -250,6 +250,77 @@ footer {
   margin-bottom: 1rem;
 }
 
+.requests {
+  width: 60%;
+  margin: 4rem auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+}
+
+.requests h3 {
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  grid-column: span 3;
+  font-family: "Roboto serif", sans-serif;
+}
+
+.requests-item {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 30% 70%;
+      grid-template-columns: 30% 70%;
+  border: 1px solid darkgrey;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.requests-item-img {
+  grid-row: span 5;
+}
+
+.requests-item-img img {
+  width: 5rem;
+  height: 5rem;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 50%;
+}
+
+.requests-item-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 1rem;
+}
+
+.requests-item-buttons button {
+  margin-right: 1rem;
+}
+
+.requests-item-name {
+  font-size: 1.2rem;
+  font-weight: 100;
+}
+
+.requests-item-price {
+  font-size: 1rem;
+  font-weight: light;
+  color: grey;
+}
+
+.requests-item-created {
+  font-size: 0.8rem;
+  color: #7f7f7f;
+}
+
+.requests-item-owner {
+  font-size: 1rem;
+  color: #7f7f7f;
+}
+
 .tradeList__items form {
   display: -webkit-box;
   display: -ms-flexbox;
