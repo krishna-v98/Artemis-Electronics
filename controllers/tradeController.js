@@ -24,7 +24,7 @@ exports.new = (req, res) => {
 exports.show = (req, res, next) => {
     let id = req.params.id;
     let user = req.session.user;
-    //promise all to get item and user ownned items
+    //promise all to get item and user ownned items and offers on current item, if user is owner of item
     Promise.all([
         model.findById(id).populate('author', 'firstName lastName'),
         model.find({ author: user }).sort({ createdAt: -1 }),

@@ -29,7 +29,7 @@ exports.exchange = (req, res, next) => {
                 return res.redirect('back');
             }
 
-            if (initiateItem.author._id == initiator._id) {
+            if (respondItem.author == initiator._id) { 
                 let err = new Error('You cannot trade your own item');
                 err.status = 404;
                 req.flash('error', err.message);
@@ -96,7 +96,7 @@ exports.acceptExchange = (req, res, next) => {
                 return res.redirect('back');
             }
 
-            if (respondItem.author._id == responder._id) {
+            if (responder._id == initiateItem.author._id) {
                 let err = new Error('You cannot trade your own item');
                 err.status = 404;
                 req.flash('error', err.message);
@@ -164,7 +164,7 @@ exports.rejectExchange = (req, res, next) => {
                 return res.redirect('back');
             }
 
-            if (respondItem.author._id == responder._id) {
+            if (responder._id == initiateItem.author._id) {
                 let err = new Error('You cannot trade your own item');
                 err.status = 404;
                 req.flash('error', err.message);

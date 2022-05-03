@@ -2,7 +2,7 @@ const rateLimit = require('express-rate-limit');
 
 exports.loginLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 5, // limit each IP to 5 requests per windowMs
+    max: 5, 
     handler: (req, res, next) => {
         let error = new Error('Too many requests');
         error.status = 429;
